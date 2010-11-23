@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20101123103215) do
     t.integer  "address_id"
     t.date     "birthdate"
     t.string   "email"
-    t.integer  "contactinfo_id"
+    t.integer  "contact_id"
     t.text     "comment"
     t.string   "idnum"
     t.integer  "sex_id"

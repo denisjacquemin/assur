@@ -4,3 +4,10 @@ fr:
     delete: Effacer
     show: Details
     edit: Editer
+  activerecord:
+    models:
+      sex: Sex
+    attributes:
+      sex:
+        
+    

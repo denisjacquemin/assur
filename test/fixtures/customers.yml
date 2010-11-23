@@ -6,7 +6,7 @@ one:
   address_id: 1
   birthdate: 2010-11-23
   email: MyString
-  contactinfo_id: 1
+  contact_id: 1
   comment: MyText
   idnum: MyString
   sex_id: 1
@@ -21,7 +21,7 @@ two:
   address_id: 1
   birthdate: 2010-11-23
   email: MyString
-  contactinfo_id: 1
+  contact_id: 1
   comment: MyText
   idnum: MyString
   sex_id: 1
