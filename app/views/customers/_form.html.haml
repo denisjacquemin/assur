@@ -1,0 +1,57 @@
+.group
+  = f.label :firstname, t("activerecord.attributes.customer.firstname", :default => "Firstname"), :class => :label
+  = f.text_field :firstname, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :lastname, t("activerecord.attributes.customer.lastname", :default => "Lastname"), :class => :label
+  = f.text_field :lastname, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :address_id, t("activerecord.attributes.customer.address_id", :default => "Address"), :class => :label
+  = f.text_field :address_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :birthdate, t("activerecord.attributes.customer.birthdate", :default => "Birthdate"), :class => :label
+  = f.date_select :birthdate, :class => 'date_select'
+  %span.description Ex: a simple text
+.group
+  = f.label :email, t("activerecord.attributes.customer.email", :default => "Email"), :class => :label
+  = f.text_field :email, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :contactinfo_id, t("activerecord.attributes.customer.contactinfo_id", :default => "Contactinfo"), :class => :label
+  = f.text_field :contactinfo_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :comment, t("activerecord.attributes.customer.comment", :default => "Comment"), :class => :label
+  = f.text_area :comment, :class => 'text_area'
+  %span.description Ex: a simple text
+.group
+  = f.label :idnum, t("activerecord.attributes.customer.idnum", :default => "Idnum"), :class => :label
+  = f.text_field :idnum, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :sex_id, t("activerecord.attributes.customer.sex_id", :default => "Sex"), :class => :label
+  = f.text_field :sex_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :nationality_id, t("activerecord.attributes.customer.nationality_id", :default => "Nationality"), :class => :label
+  = f.text_field :nationality_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :cibilstatus_id, t("activerecord.attributes.customer.cibilstatus_id", :default => "Cibilstatus"), :class => :label
+  = f.text_field :cibilstatus_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :language_id, t("activerecord.attributes.customer.language_id", :default => "Language"), :class => :label
+  = f.text_field :language_id, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :jobdescription, t("activerecord.attributes.customer.jobdescription", :default => "Jobdescription"), :class => :label
+  = f.text_field :jobdescription, :class => 'text_field'
+  %span.description Ex: a simple text
+.group.navform.wat-cf
+  %button.button{:type => "submit"}
+    = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), customers_path, :class => "button"

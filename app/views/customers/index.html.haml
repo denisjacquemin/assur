@@ -1,0 +1,33 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", customers_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_customer_path
+  .content
+    %h2.title
+      = t("assur.all_customers", :default => "All Customers")
+    .inner
+      %table.table
+        %tr
+          %th.first ID
+          %th
+            = t("activerecord.attributes.customer.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @customers.each do |customer|
+          %tr{:class => cycle("odd", "even")}
+            %td
+              = customer.id
+            %td
+              = link_to customer.firstname, customer_path(customer)
+            %td
+              = customer.created_at
+            %td.last
+              = link_to "#{t("assur.show", :default => "Show")}", customer_path(customer)
+              |
+              \#{link_to "#{t("assur.edit", :default => "Edit")}", edit_customer_path(customer)} 
+              |
+              \#{link_to "#{t("assur.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+      .actions-bar.wat-cf
+        .actions
+- content_for :sidebar, render(:partial => 'sidebar')
