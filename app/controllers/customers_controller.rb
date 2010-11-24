@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new
     @customer.build_address
     @customer.address.build_country
+    @customer.build_contact
 
     respond_to do |format|
       format.html # new.html.erb
