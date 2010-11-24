@@ -1,15 +1,36 @@
 .group
   = f.label :firstname, t("activerecord.attributes.customer.firstname", :default => "Firstname"), :class => :label
   = f.text_field :firstname, :class => 'text_field'
-  %span.description Ex: a simple text
 .group
   = f.label :lastname, t("activerecord.attributes.customer.lastname", :default => "Lastname"), :class => :label
   = f.text_field :lastname, :class => 'text_field'
-  %span.description Ex: a simple text
-.group
-  = f.label :address_id, t("activerecord.attributes.customer.address_id", :default => "Address"), :class => :label
-  = f.text_field :address_id, :class => 'text_field'
-  %span.description Ex: a simple text
+= f.fields_for :address do |a|
+  .fieldset
+    .group
+      .columns.wat-cf 
+        .verylargecolumn.left
+          = a.label :street, t("activerecord.attributes.address.street", :default => 'Street'), :class => :label
+          = a.text_field :street, :class => 'text_field'
+        .verysmallcolumn.right
+          = a.label :number, t("activerecord.attributes.address.number", :default => 'Number'), :class => :label
+          = a.text_field :number, :class => 'text_field'
+    .group
+      .columns.wat-cf 
+        .column.left     
+          = a.label :box, t("activerecord.attributes.address.box", :default => 'Box'), :class => :label
+          = a.text_field :box, :class => 'text_field'
+        .column.right
+          = a.label :zipcode, t("activerecord.attributes.address.zipcode", :default => 'Zip code'), :class => :label
+          = a.text_field :zipcode, :class => 'text_field'        
+    .group
+      .columns.wat-cf 
+        .column.left     
+          = a.label :city, t("activerecord.attributes.address.city", :default => 'City'), :class => :label
+          = a.text_field :city, :class => 'text_field'
+        = a.fields_for :country do |c|
+          .column.right
+            = c.label :name, t("activerecord.attributes.country.name", :default => 'Country'), :class => :label
+            = c.text_field :name, :class => 'text_field'       
 .group
   = f.label :birthdate, t("activerecord.attributes.customer.birthdate", :default => "Birthdate"), :class => :label
   = f.date_select :birthdate, :class => 'date_select'
@@ -19,7 +40,7 @@
   = f.text_field :email, :class => 'text_field'
   %span.description Ex: a simple text
 .group
-  = f.label :contact_id, t("activerecord.attributes.customer.contact_id", :default => "contact"), :class => :label
+  = f.label :contact_id, t("activerecord.attributes.customer.contact_id", :default => "Contact"), :class => :label
   = f.text_field :contact_id, :class => 'text_field'
   %span.description Ex: a simple text
 .group

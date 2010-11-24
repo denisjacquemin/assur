@@ -1,0 +1,22 @@
+.fieldset {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #aaa;
+    margin: 15px 0;
+}
+
+.form .columns .smallcolumn {
+    width: 28%;
+}
+
+.form .columns .largecolumn {
+    width: 68%;
+}
+
+.form .columns .verysmallcolumn {
+    width: 18%;
+}
+
+.form .columns .verylargecolumn {
+    width: 78%;
+}

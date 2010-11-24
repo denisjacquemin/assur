@@ -5,7 +5,8 @@
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_customer_path
   .content
     %h2.title
-      = t("assur.all_customers", :default => "All Customers")
+      = t("web-app-theme.all", :default => "All")
+      Customers
     .inner
       %table.table
         %tr
@@ -23,11 +24,10 @@
             %td
               = customer.created_at
             %td.last
-              = link_to "#{t("assur.show", :default => "Show")}", customer_path(customer)
+              = link_to "#{t("web-app-theme.show", :default => "Show")}", customer_path(customer)
               |
-              \#{link_to "#{t("assur.edit", :default => "Edit")}", edit_customer_path(customer)} 
-              |
-              \#{link_to "#{t("assur.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_customer_path(customer)} |
+              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
 - content_for :sidebar, render(:partial => 'sidebar')

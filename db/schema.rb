@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123103215) do
+ActiveRecord::Schema.define(:version => 20101123103954) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(:version => 20101123103215) do
     t.string   "zipcode"
     t.string   "city"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "title_id"
+    t.string   "primary_email"
+    t.string   "secondary_email"
+    t.string   "private_phone"
+    t.string   "office_phone"
+    t.string   "cellphone"
+    t.string   "fax"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -25,6 +25,8 @@ class CustomersController < ApplicationController
   # GET /customers/new.xml
   def new
     @customer = Customer.new
+    @customer.build_address
+    @customer.address.build_country
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +36,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.includes(:address => [:country]).find(params[:id])
   end
 
   # POST /customers
