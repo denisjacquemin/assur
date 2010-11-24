@@ -20,3 +20,18 @@
 .form .columns .verylargecolumn {
     width: 78%;
 }
+
+.form .custform1 .one {
+    width: 33%;
+    float: left;
+}
+
+.form .custform1 .two{
+    width: 30%;
+    float: left;
+}
+
+.form .custform1 .three {
+    width: 30%;
+    float: left;
+}

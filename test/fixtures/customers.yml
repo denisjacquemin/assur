@@ -11,7 +11,7 @@ one:
   idnum: MyString
   sex_id: 1
   nationality_id: 1
-  cibilstatus_id: 1
+  civilstatus_id: 1
   language_id: 1
   jobdescription: MyString
 
@@ -26,6 +26,6 @@ two:
   idnum: MyString
   sex_id: 1
   nationality_id: 1
-  cibilstatus_id: 1
+  civilstatus_id: 1
   language_id: 1
   jobdescription: MyString

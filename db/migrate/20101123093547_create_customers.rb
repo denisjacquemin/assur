@@ -11,7 +11,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :idnum
       t.integer :sex_id
       t.integer :nationality_id
-      t.integer :cibilstatus_id
+      t.integer :civilstatus_id
       t.integer :language_id
       t.string :jobdescription
 
