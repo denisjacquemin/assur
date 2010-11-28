@@ -10,6 +10,7 @@ gem 'web-app-theme', '>= 0.6.2'
 gem 'haml'
 gem 'hpricot'
 gem 'ruby_parser'
+gem 'devise'
 
 # Use unicorn as the web server
 # gem 'unicorn'
