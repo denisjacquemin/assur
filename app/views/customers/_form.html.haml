@@ -10,24 +10,20 @@
       = f.label :birthdate, t("activerecord.attributes.customer.birthdate", :default => "Birthdate"), :class => :label
       = f.date_select :birthdate, :class => 'date_select'
     .two
-      = f.fields_for :sex do |s|
-        = s.label :name, t("activerecord.attributes.sex.name", :default => 'Gender'), :class => :label
-        = collection_select('customer_sex', :sex_id, Sex.all, :id, :name, :prompt => 'Please select a gender')
+      = f.label :sex_id, t("activerecord.attributes.sex.name", :default => 'Gender'), :class => :label
+      = f.collection_select(:sex_id, Sex.all, :id, :name)
     .three
-      = f.fields_for :civilstatus do |c|
-        = c.label :name, t("activerecord.attributes.civilstatus.name", :default => 'Civil Status'), :class => :label
-        = collection_select('customer_civilstatus', :civilstatus_id, Civilstatus.all, :id, :name, :prompt => 'Please select a civil status')
+      = f.label :civilstatus_id, t("activerecord.attributes.civilstatus.name", :default => 'Civil Status'), :class => :label
+      = f.collection_select(:civilstatus_id, Civilstatus.all, :id, :name)
 .group
   .columns.wat-cf.custform1 
     .one
-      = f.fields_for :nationality do |n|
-        = n.label :name, t("activerecord.attributes.nationality.name", :default => 'Nationality'), :class => :label
-        = collection_select('customer_nationality', :nationality_id, Nationality.all, :id, :name, :prompt => 'Please select a nationality')
+      = f.label :nationality_id, t("activerecord.attributes.nationality.name", :default => 'Nationality'), :class => :label
+      = f.collection_select(:nationality_id, Nationality.all, :id, :name)
 
     .two
-      = f.fields_for :language do |l|
-        = l.label :name, t("activerecord.attributes.language.name", :default => 'Language'), :class => :label
-        = collection_select('customer_language', :language_id, Language.all, :id, :name, :prompt => 'Please select a language')
+      = f.label :language_id, t("activerecord.attributes.language.name", :default => 'Language'), :class => :label
+      = f.collection_select(:language_id, Language.all, :id, :name)
 = f.fields_for :address do |a|
   .fieldset
     .group
@@ -51,16 +47,14 @@
         .column.left     
           = a.label :city, t("activerecord.attributes.address.city", :default => 'City'), :class => :label
           = a.text_field :city, :class => 'text_field'
-        = a.fields_for :country do |c|
-          .column.right
-            = c.label :name, t("activerecord.attributes.country.name", :default => 'Country'), :class => :label
-            = c.text_field :name, :class => 'text_field'
+        .column.right
+          = a.label :country_id, t("activerecord.attributes.country.name", :default => 'Country'), :class => :label
+          = a.collection_select(:country_id, Country.all, :id, :name)
 = f.fields_for :contact do |c|
   .fieldset
     .group
-      = c.fields_for :title do |t|
-        = t.label :name, t("activerecord.attributes.title.name", :default => 'Title'), :class => :label
-        = collection_select('customer_contact', :title_id, Title.all, :id, :name, :prompt => 'Please select a title')
+      = c.label :title_id, t("activerecord.attributes.title.name", :default => 'Title'), :class => :label
+      = c.collection_select(:title_id, Title.all, :id, :name)
     .group
       .columns.wat-cf 
         .column.left

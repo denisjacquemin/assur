@@ -28,6 +28,11 @@ class CustomersController < ApplicationController
     @customer.build_address
     @customer.address.build_country
     @customer.build_contact
+    @customer.build_sex
+    @customer.build_civilstatus
+    @customer.build_language
+    @customer.build_nationality
+    @customer.build_title
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,7 +42,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.includes(:address => [:country]).find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   # POST /customers
