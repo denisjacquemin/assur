@@ -35,3 +35,26 @@
     width: 30%;
     float: left;
 }
+
+#quick-search {
+    float:right;
+    width: 300px;
+    
+    font-weight: normal;
+    text-align: right;
+    padding: 0 15px 0 0;
+    margin: 0;
+}
+
+#quick-search label {
+    color:#666666;
+    padding: 0 2px 0 0;
+    font-size: 0.6em;
+    display: inline;
+}
+
+#quick-search input {
+    display: inline;
+    width: 150px;
+    font-size: 0.7em;
+}

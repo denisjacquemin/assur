@@ -7,6 +7,9 @@
     %h2.title
       = t("web-app-theme.all", :default => "Listing")
       clients
+      #quick-search.form 
+        = label_tag :quicksearch, "Recherche rapide"
+        = text_field_tag :quicksearch, '', :class => 'text_field'
     .inner
       %table.table
         %tr
