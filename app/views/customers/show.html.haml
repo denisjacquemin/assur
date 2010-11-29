@@ -6,6 +6,13 @@
       %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", customer_path
   .content
     .inner
+      .group
+        = t("activerecord.attributes.customer.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname"))
+        = @customer.firstname
+      .group
+        = t("activerecord.attributes.customer.lastname", :default => t("activerecord.labels.lastname", :default => "Lastname"))
+        = @customer.lastname
+      
       %p
         %b
           = t("activerecord.attributes.customer.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname"))

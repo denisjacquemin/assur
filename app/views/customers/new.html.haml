@@ -1,12 +1,12 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", customers_path
-      %li.active= link_to "#{t("web-app-theme.new", :default => "New")}", new_customer_path
+      %li.first= link_to "#{t("web-app-theme.list", :default => "Liste")}", customers_path
+      %li.active= link_to "#{t("web-app-theme.new", :default => "Nouveau")}", new_customer_path
   .content
     %h2.title
-      = t("web-app-theme.new", :default => "New")
-      Customer
+      = t("web-app-theme.new", :default => "Nouveau")
+      client
     .inner
       = form_for @customer, :url => customers_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

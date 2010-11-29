@@ -14,6 +14,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.integer :civilstatus_id
       t.integer :language_id
       t.string :jobdescription
+      t.string :reference
 
       t.timestamps
     end

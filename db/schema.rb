@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20101128194759) do
     t.integer  "civilstatus_id"
     t.integer  "language_id"
     t.string   "jobdescription"
+    t.string   "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

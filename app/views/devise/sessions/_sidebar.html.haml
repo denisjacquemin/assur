@@ -1,0 +1,18 @@
+.block.notice
+  %h3 Aide identification
+  .content
+    %p Bienvenue, cette page permet de vous identifier afin d'acceder de maniere securisee et personalisee au systeme xyz.
+    %p 
+      = "Si vous rencontrez des difficultes pour vous authentifier, verifiez que les majuscules sont bien desactivees sur votre clavier."
+    %p
+      = raw "Vous ne vous rappelez plus de votre mot de passe, pas de probleme, utilisez le lien #{link_to 'Oublie mon mot de passe?', new_password_path(resource_name)} pour le recuperer."
+    
+    %p
+      = raw "Vous n'avez pas encore ouvert de compte, utilisez le lien #{link_to "Pas encore inscrit?", new_registration_path(resource_name)}."
+.block
+  %h3 Liens
+  %ul.navigation
+    %li
+      = link_to "Oublie mon mot de passe?", new_password_path(resource_name)
+    %li
+      = link_to "Pas encore inscrit?", new_registration_path(resource_name)

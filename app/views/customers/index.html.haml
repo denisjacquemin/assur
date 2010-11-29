@@ -1,32 +1,30 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", customers_path
-      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_customer_path
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "Liste")}", customers_path
+      %li= link_to "#{t("web-app-theme.new", :default => "Nouveau")}", new_customer_path
   .content
     %h2.title
-      = t("web-app-theme.all", :default => "All")
-      Customers
+      = t("web-app-theme.all", :default => "Listing")
+      clients
     .inner
       %table.table
         %tr
-          %th.first ID
-          %th
-            = t("activerecord.attributes.customer.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname"))
-          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th Nom Prenom
+          %th Ville
+            
+          %th Reference
           %th.last &nbsp;
         - @customers.each do |customer|
           %tr{:class => cycle("odd", "even")}
             %td
-              = customer.id
+              = link_to "#{customer.firstname} #{customer.lastname}", edit_customer_path(customer)
             %td
-              = link_to customer.firstname, customer_path(customer)
+              = customer.address.city
             %td
-              = customer.created_at
+              = customer.reference
+              dj10234
             %td.last
-              = link_to "#{t("web-app-theme.show", :default => "Show")}", customer_path(customer)
-              |
-              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_customer_path(customer)} |
               \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
