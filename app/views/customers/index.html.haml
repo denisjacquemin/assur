@@ -9,9 +9,9 @@
       clients
       #quick-search.form 
         = label_tag :quicksearch, "Recherche rapide"
-        = text_field_tag :quicksearch, '', :class => 'text_field'
+        = text_field_tag :quicksearch, '', :class => 'text_field', :onKeyUp => 'quicksearch.filter(this.value);'
     .inner
-      %table.table
+      %table.table{:id => 'customers'}
         %tr
           %th Nom Prenom
           %th Ville
@@ -19,7 +19,7 @@
           %th Reference
           %th.last &nbsp;
         - @customers.each do |customer|
-          %tr{:class => cycle("odd", "even")}
+          %tr.row{:class => cycle("odd", "even")}
             %td
               = link_to "#{customer.firstname} #{customer.lastname}", edit_customer_path(customer)
             %td
