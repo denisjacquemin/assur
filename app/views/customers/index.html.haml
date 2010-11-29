@@ -9,7 +9,7 @@
       clients
       #quick-search.form 
         = label_tag :quicksearch, "Recherche rapide"
-        = text_field_tag :quicksearch, '', :class => 'text_field', :onKeyUp => 'quicksearch.filter(this.value);'
+        = text_field_tag :quicksearch, '', :class => 'text_field focus', :onKeyUp => 'quicksearch.filter(this.value);'
     .inner
       %table.table{:id => 'customers'}
         %tr
@@ -31,4 +31,4 @@
               \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
-- content_for :sidebar, render(:partial => 'sidebar')
+- content_for :sidebar, render(:partial => 'index_sidebar')

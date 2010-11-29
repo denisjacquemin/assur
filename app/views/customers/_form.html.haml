@@ -2,7 +2,7 @@
   .columns.wat-cf 
     .column.left
       = f.label :firstname, t("activerecord.attributes.customer.firstname", :default => "Firstname"), :class => :label
-      = f.text_field :firstname, :class => 'text_field'
+      = f.text_field :firstname, :class => 'text_field focus'
     .column.right
       = f.label :lastname, t("activerecord.attributes.customer.lastname", :default => "Lastname"), :class => :label
       = f.text_field :lastname, :class => 'text_field'
