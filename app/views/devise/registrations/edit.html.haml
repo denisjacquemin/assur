@@ -3,31 +3,26 @@
     %h2.title Profile
     .inner
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form login' }) do |f|
-        .group.wat-cf
-          .left
-            = f.label :email, :class => 'label right'
-          .right
-            = f.text_field :email, :class => 'text_field'
-        .group.wat-cf
-          .left
-            = f.label :password, :class => 'label right'
-          .right
+        .group
+          .columns.wat-cf
+            = f.label :email, :class => 'label'
+            = f.text_field :email, :class => 'text_field focus'
+        .group
+          .columns.wat-cf
+            = f.label :password, :class => 'label'
             = f.password_field :password, :class => 'text_field'
             %span.description leave blank if you don't want to change it
-        .group.wat-cf
-          .left
-            = f.label :password_confirmation, :class => 'label right'
-          .right
+        .group
+          .columns.wat-cf
+            = f.label :password_confirmation, :class => 'label'
             = f.password_field :password_confirmation, :class => 'text_field'        
-        .group.wat-cf
-          .left
-            = f.label :current_password, :class => 'label right'
-          .right
+        .group
+          .columns.wat-cf
+            = f.label :current_password, :class => 'label'
             = f.password_field :current_password, :class => 'text_field'
             %span.description we need your current password to confirm your changes
         .group.wat-cf.navform
-          .right
-            %button.button{:type => "submit"}
-              = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
-              = t("web-app-theme.save", :default => "Save")
+          %button.button{:type => "submit"}
+            = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+            = t("web-app-theme.save", :default => "Save")
   - content_for :sidebar, render(:partial => 'sidebar')
