@@ -58,3 +58,12 @@
     width: 150px;
     font-size: 0.7em;
 }
+
+#user-navigation li.blank, #user-navigation li a:link.blank, #user-navigation li a:visited.blank {
+  color: #fff;
+  padding: 1px 4px;
+}
+#user-navigation li.blank {
+  padding:5px 10px;
+}
+

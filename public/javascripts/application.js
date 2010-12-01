@@ -4,6 +4,9 @@ document.observe("dom:loaded", function() {
     quicksearch = new CustomerFilter('customers');
     quicksearch.filter($F('quicksearch'));
   } catch(e){}
+  
+  
   $$('.focus').invoke('select');
+
 
 });
