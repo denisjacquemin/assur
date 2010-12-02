@@ -21,6 +21,10 @@
             = f.label :current_password, :class => 'label'
             = f.password_field :current_password, :class => 'text_field'
             %span.description we need your current password to confirm your changes
+        .group
+          .columns.wat-cf
+            = f.label :language_id, :class => 'label'
+            = f.collection_select(:language_id, Language.all, :id, :name)  
         .group.wat-cf.navform
           %button.button{:type => "submit"}
             = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")

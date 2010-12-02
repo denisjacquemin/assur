@@ -1,22 +1,24 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first.active= link_to "#{t("web-app-theme.list", :default => "Liste")}", customers_path
-      %li= link_to "#{t("web-app-theme.new", :default => "Nouveau")}", new_customer_path
+      %li.first.active= link_to "#{t("assur.customer.list")}", customers_path
+      %li= link_to "#{t("assur.customer.new")}", new_customer_path
   .content
     %h2.title
-      = t("web-app-theme.all", :default => "Listing")
-      clients
+      = t("assur.customer.listing")
+      = t("assur.customer.customers")
       #quick-search.form 
-        = label_tag :quicksearch, "Recherche rapide"
+        = label_tag :quicksearch, t("assur.customer.quick_search")
         = text_field_tag :quicksearch, '', :class => 'text_field focus', :onKeyUp => 'quicksearch.filter(this.value);'
     .inner
       %table.table{:id => 'customers'}
         %tr
-          %th Nom Prenom
-          %th Ville
-            
-          %th Reference
+          %th 
+            = "#{t("assur.customer.lastname")} - #{t("assur.customer.firstname")}"
+          %th 
+            = t("assur.customer.city")            
+          %th 
+            = t("assur.customer.reference")
           %th.last &nbsp;
         - @customers.each do |customer|
           %tr.row{:class => cycle("odd", "even")}
@@ -28,7 +30,7 @@
               = customer.reference
               dj10234
             %td.last
-              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+              \#{link_to "#{t("assur.customer.delete")}", customer_path(customer), :method => :delete, :confirm => "#{t("assur.customer.are_you_sure")}"}
       .actions-bar.wat-cf
         .actions
 - content_for :sidebar, render(:partial => 'index_sidebar')
