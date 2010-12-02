@@ -1,27 +1,24 @@
-#box
-  #block-login.block
-    %h2 Identification
-    .content.login
+.block
+  .content
+    %h2.title Identification
+    .inner
       = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form login'}) do |f|
-        .group.wat-cf
-          .left
-            = f.label :email, 'Email', :class => 'label right'
-          .right
-            = f.text_field :email, :class => 'text_field'
-        .group.wat-cf
-          .left
-            = f.label :password, 'Mot de passe', :class => 'label right'
-          .right
+        .group
+          .columns.wat-cf
+            = f.label :email, 'Email', :class => 'label'
+            = f.text_field :email, :class => 'text_field focus'
+        .group
+          .columns.wat-cf
+            = f.label :password, 'Mot de passe', :class => 'label'
             = f.password_field :password, :class => 'text_field'
         
         - if devise_mapping.rememberable?
-          .group.wat-cf
-            .right
+          .group
+            .columns.wat-cf
               = f.check_box :remember_me
               = f.label :remember_me, 'Se rappeler de moi'
         .group.wat-cf.navform
-          .right
-            %button.button{:type => "submit"}
-              = image_tag("web-app-theme/icons/key.png", :alt => "#{t("web-app-theme.login", :default => "Login")}")
-              = t("web-app-theme.login", :default => "Login")
+          %button.button{:type => "submit"}
+            = image_tag("web-app-theme/icons/key.png", :alt => "#{t("web-app-theme.login", :default => "Login")}")
+            = t("web-app-theme.login", :default => "Login")
   - content_for :sidebar, render(:partial => 'sidebar')
