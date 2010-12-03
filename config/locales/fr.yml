@@ -50,7 +50,8 @@ fr:
       sign_in: Identification
       confirmpassword: Confirmer mot de passe
       currentpassword: Mot de passe courant
-      
+      successfully_created: Client cree avec succes
+      successfully_updated: Client mis a jour avec succes
       
       
     all_customers: Tous les Clients

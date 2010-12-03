@@ -30,7 +30,6 @@ class CustomersController < ApplicationController
     @customer = Customer.new
     @customer.build_address
     @customer.address.build_country
-    @customer.build_contact
     @customer.build_sex
     @customer.build_civilstatus
     @customer.build_language
@@ -55,7 +54,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to(@customer, :notice => 'Customer was successfully created.') }
+        format.html { redirect_to customers_url, :notice => "#{t('assur.customer.successfully_created')}." }
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
         format.html { render :action => "new" }
@@ -71,7 +70,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        format.html { redirect_to(@customer, :notice => 'Customer was successfully updated.') }
+        format.html { redirect_to customers_url, :notice => "#{t('assur.customer.successfully_updated')}." }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

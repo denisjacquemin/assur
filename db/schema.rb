@@ -29,18 +29,6 @@ ActiveRecord::Schema.define(:version => 20101202064847) do
     t.datetime "updated_at"
   end
 
-  create_table "contacts", :force => true do |t|
-    t.integer  "title_id"
-    t.string   "primary_email"
-    t.string   "secondary_email"
-    t.string   "private_phone"
-    t.string   "office_phone"
-    t.string   "cellphone"
-    t.string   "fax"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -62,6 +50,13 @@ ActiveRecord::Schema.define(:version => 20101202064847) do
     t.integer  "language_id"
     t.string   "jobdescription"
     t.string   "reference"
+    t.integer  "title_id"
+    t.string   "primary_email"
+    t.string   "secondary_email"
+    t.string   "private_phone"
+    t.string   "office_phone"
+    t.string   "cellphone"
+    t.string   "fax"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

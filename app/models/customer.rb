@@ -1,6 +1,5 @@
 class Customer < ActiveRecord::Base
   belongs_to :address
-  belongs_to :contact
   belongs_to :sex
   belongs_to :civilstatus
   belongs_to :language
@@ -8,7 +7,6 @@ class Customer < ActiveRecord::Base
   belongs_to :title
   
   accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :contact
   accepts_nested_attributes_for :sex
   accepts_nested_attributes_for :civilstatus
   accepts_nested_attributes_for :language

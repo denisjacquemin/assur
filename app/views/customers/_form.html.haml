@@ -10,7 +10,7 @@
   .columns.wat-cf.custform1 
     .one
       = f.label :birthdate, t("assur.customer.birthdate"), :class => :label
-      = f.date_select :birthdate, :class => 'date_select', :start_year => 1900
+      -#= f.date_select :birthdate, :class => 'date_select', :start_year => 1900
     .two
       = f.label :sex_id, t("assur.customer.gender"), :class => :label
       = f.collection_select(:sex_id, Sex.all, :id, :name)
@@ -52,37 +52,37 @@
         .column.right
           = a.label :country_id, t("assur.customer.country"), :class => :label
           = a.collection_select(:country_id, Country.all, :id, :name)
-= f.fields_for :contact do |c|
-  .fieldset
-    .group
-      = c.label :title_id, t("assur.customer.title"), :class => :label
-      = c.collection_select(:title_id, Title.all, :id, :name)
-    .group
-      .columns.wat-cf 
-        .column.left
-          = c.label :primary_email, t("assur.customer.primary_email"), :class => :label
-          = c.text_field :primary_email, :class => 'text_field'
-          %span.description Ex: george.dupont@example.com
-        .column.right
-          = c.label :secondary_email, t("assur.customer.secondary_email"), :class => :label
-          = c.text_field :secondary_email, :class => 'text_field'
-          %span.description Ex: george.dupont@boulot.be     
-    .group
-      .columns.wat-cf 
-        .column.left
-          = c.label :private_phone, t("assur.customer.private_phone"), :class => :label
-          = c.text_field :private_phone, :class => 'text_field'
-        .column.right
-          = c.label :office_phone, t("assur.customer.office_phone"), :class => :label
-          = c.text_field :office_phone, :class => 'text_field'
-    .group
-      .columns.wat-cf 
-        .column.left
-          = c.label :cellphone, t("assur.customer.cellphone"), :class => :label
-          = c.text_field :cellphone, :class => 'text_field'
-        .column.right
-          = c.label :fax, t("assur.customer.fax"), :class => :label
-          = c.text_field :fax, :class => 'text_field'
+
+.fieldset
+  .group
+    = f.label :title_id, t("assur.customer.title"), :class => :label
+    = f.collection_select(:title_id, Title.all, :id, :name)
+  .group
+    .columns.wat-cf 
+      .column.left
+        = f.label :primary_email, t("assur.customer.primary_email"), :class => :label
+        = f.text_field :primary_email, :class => 'text_field'
+        %span.description Ex: george.dupont@example.com
+      .column.right
+        = f.label :secondary_email, t("assur.customer.secondary_email"), :class => :label
+        = f.text_field :secondary_email, :class => 'text_field'
+        %span.description Ex: george.dupont@boulot.be     
+  .group
+    .columns.wat-cf 
+      .column.left
+        = f.label :private_phone, t("assur.customer.private_phone"), :class => :label
+        = f.text_field :private_phone, :class => 'text_field'
+      .column.right
+        = f.label :office_phone, t("assur.customer.office_phone"), :class => :label
+        = f.text_field :office_phone, :class => 'text_field'
+  .group
+    .columns.wat-cf 
+      .column.left
+        = f.label :cellphone, t("assur.customer.cellphone"), :class => :label
+        = f.text_field :cellphone, :class => 'text_field'
+      .column.right
+        = f.label :fax, t("assur.customer.fax"), :class => :label
+        = f.text_field :fax, :class => 'text_field'
 .group
   = f.label :idnum, t("assur.customer.idnum"), :class => :label
   = f.text_field :idnum, :class => 'text_field'

@@ -15,6 +15,13 @@ class CreateCustomers < ActiveRecord::Migration
       t.integer :language_id
       t.string :jobdescription
       t.string :reference
+      t.integer :title_id
+      t.string :primary_email
+      t.string :secondary_email
+      t.string :private_phone
+      t.string :office_phone
+      t.string :cellphone
+      t.string :fax
 
       t.timestamps
     end
