@@ -1,10 +1,20 @@
 fr:
   assur:
-    customer:
-      list: Liste
+    general:
+      links: Liens
       new: Nouveau
       delete: Effacer
+      save: Sauver
+      cancel: Annuler
       details: Details
+      forgotpassword: Oublie mon mot de passe
+      notyetregistered: Pas encore inscrit?
+      profile: Profile
+      logout: Deconnexion
+      leave_blank_if_you_dont_want_to_change_it: Laisser blanc si vous ne voulez pas le changer
+      we_need_current_password_to_change_it: Nous avons besoin de votre mot de passe courant pour pouvoir le changer
+    customer:
+      list: Liste
       are_you_sure: Etes vous sur?
       listing: Listing
       customers: clients
@@ -15,6 +25,30 @@ fr:
       city: Ville
       reference: Reference
       gender: Sex
+      civilstatus: Statut civil
+      nationality: Nationalite
+      language: Langue
+      street: Rue
+      number: Numero
+      box: Boite
+      zipcode: Code postal
+      city: Ville
+      country: Pays
+      title: Titre
+      primary_email: Email 1
+      secondary_email: Email 2
+      private_phone: Telephone prive
+      office_phone: Telephone professionnel
+      cellphone: GSM
+      fax: Fax
+      idnum: Numero de carte d'identitee
+      jobdescription: Job
+      comment: Commentaire
+      cancelaccount: Annuler mon compte
+      email: Email
+      password: Mot de passe
+      confirmpassword: Confirmer mot de passe
+      currentpassword: Mot de passe courant
       
       
       

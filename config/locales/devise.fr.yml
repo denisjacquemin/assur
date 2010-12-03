@@ -1,0 +1,39 @@
+fr:
+  errors:
+    messages:
+      not_found: "pas trouve"
+      already_confirmed: "a deja ete confirme"
+      not_locked: "n'a pas ete bloque"
+
+  devise:
+    failure:
+      unauthenticated: 'Vous avez besoin de vous identifier ou vous inscrire avant de continuer.'
+      unconfirmed: 'Vous devez confirmer votre compte avant de continuer.'
+      locked: 'Votre compte est bloque.'
+      invalid: 'Email ou mot de passe invalide.'
+      invalid_token: "Token d'authentification invalide."
+      timeout: 'Votre session est expiree, identifier vous pour continuer.'
+      inactive: "Votre compte n'a pas encore ete active."
+    sessions:
+      signed_in: 'Idententifie avec succes.'
+      signed_out: 'Signed out successfully.'
+    passwords:
+      send_instructions: 'Vous allez recevoir un email avec les instructions pour changer votre mot de passe dans quelque instants.'
+      updated: 'Votre mot de passe a ete change avec succes, vous etes maintenant identifier.'
+    confirmations:
+      send_instructions: 'Vous allez recevoir un email avec les instructions pour confirmer votre inscription dans quelque instants.'
+      confirmed: 'Votre compte a ete confirme avec succes, vous etes maintenant identifie.'
+    registrations:
+      signed_up: 'Vous vous etes inscrit avec succes. Vous allez recevoir un email dans quelque instants.'
+      updated: 'Mise a jour de votre compte enregistree.'
+      destroyed: 'Votre compte a bien ete supprime. Nous esperons vous revoir bientot.'
+    unlocks:
+      send_instructions: 'Vous allez recevoir a email avec les instructions sur comment debloquer votre compte dans quelque instants.'
+      unlocked: 'Votre compte a ete debloque avec succes, vous etes maintenant identifie.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instruction de confirmation'
+      reset_password_instructions:
+        subject: 'Instruction de changement de mot de passe'
+      unlock_instructions:
+        subject: 'Instructions de deblocage'
