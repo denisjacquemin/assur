@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
     def login_required
       unless user_signed_in? or ['sessions'].include? controller_name
-        flash[:error] = 'You must be logged in to view this page.'
+        flash[:error] = t("errors.messages.you_must_be_logged")
         redirect_to new_user_session_path
       end
     end

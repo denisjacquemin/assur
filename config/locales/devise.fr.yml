@@ -4,7 +4,7 @@ fr:
       not_found: "pas trouve"
       already_confirmed: "a deja ete confirme"
       not_locked: "n'a pas ete bloque"
-
+      you_must_be_logged: 'Vous devez etre identifie'
   devise:
     failure:
       unauthenticated: 'Vous avez besoin de vous identifier ou vous inscrire avant de continuer.'
@@ -17,6 +17,7 @@ fr:
     sessions:
       signed_in: 'Idententifie avec succes.'
       signed_out: 'Signed out successfully.'
+      remember_me: 'Se rappeler de moi'
     passwords:
       send_instructions: 'Vous allez recevoir un email avec les instructions pour changer votre mot de passe dans quelque instants.'
       updated: 'Votre mot de passe a ete change avec succes, vous etes maintenant identifier.'

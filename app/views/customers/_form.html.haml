@@ -10,7 +10,7 @@
   .columns.wat-cf.custform1 
     .one
       = f.label :birthdate, t("assur.customer.birthdate"), :class => :label
-      = f.date_select :birthdate, :class => 'date_select'
+      = f.date_select :birthdate, :class => 'date_select', :start_year => 1900
     .two
       = f.label :sex_id, t("assur.customer.gender"), :class => :label
       = f.collection_select(:sex_id, Sex.all, :id, :name)

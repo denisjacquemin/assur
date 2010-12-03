@@ -47,6 +47,7 @@ fr:
       cancelaccount: Annuler mon compte
       email: Email
       password: Mot de passe
+      sign_in: Identification
       confirmpassword: Confirmer mot de passe
       currentpassword: Mot de passe courant
       

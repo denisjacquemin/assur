@@ -2,11 +2,11 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first= link_to t("assur.customer.list"), customers_path
-      %li= link_to t("assur.customer.new"), new_customer_path
-      %li.active= link_to t("assur.customer.details"), edit_customer_path
+      %li= link_to t("assur.general.new"), new_customer_path
+      %li.active= link_to t("assur.general.details"), edit_customer_path
   .content
     %h2.title
-      = t("assur.customer.details")
+      = t("assur.general.details")
       = t("assur.customer.customers")
     .inner
       = form_for @customer, :url => customer_path(@customer), :html => { :class => :form } do |f|
