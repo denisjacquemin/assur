@@ -24,7 +24,7 @@ fr:
       birthdate: Date de naissance
       city: Ville
       reference: Reference
-      gender: Sex
+      gender: Sexe
       civilstatus: Statut civil
       nationality: Nationalite
       language: Langue
@@ -43,7 +43,7 @@ fr:
       fax: Fax
       idnum: Numero de carte d'identitee
       jobdescription: Job
-      comment: Commentaire
+      comment: Commentaires
       cancelaccount: Annuler mon compte
       email: Email
       password: Mot de passe

@@ -1,0 +1,40 @@
+sur base du tag v0.1
+
+1- Refactoring
+   inclure le model Contact dans Customer
+
+- Ajout du model folder
+  id
+  name
+  customer_id
+
+- Ajout du model Contract
+  id
+  creation_date
+  brand_id
+  customer_id
+  user_id
+ 
+  
+- Ajout du model Company
+  id
+  name
+  address_id
+  comment
+  
+- Ajout du model Brand
+  id
+  company_id
+  
+- Ajout du model Contact
+  id
+  firstname
+  lastname
+  company_id
+  email
+  phone1
+  phone2
+  fax
+  comment
+  
+remove show action from customer et prevoir un acces en readonly a l'appli

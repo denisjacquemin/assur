@@ -7,20 +7,21 @@
           .columns.wat-cf
             = f.label :email, t("assur.customer.email"), :class => 'label'
             = f.text_field :email, :class => 'text_field focus'
-        .group
-          .columns.wat-cf
-            = f.label :password, t("assur.customer.password"), :class => 'label'
-            = f.password_field :password, :class => 'text_field'
-            %span.description= t("assur.general.leave_blank_if_you_dont_want_to_change_it")
-        .group
-          .columns.wat-cf
-            = f.label :password_confirmation, t("assur.customer.confirmpassword"), :class => 'label'
-            = f.password_field :password_confirmation, :class => 'text_field'        
-        .group
-          .columns.wat-cf
-            = f.label :current_password, t("assur.customer.currentpassword"), :class => 'label'
-            = f.password_field :current_password, :class => 'text_field'
-            %span.description= t("assur.general.we_need_current_password_to_change_it")
+        .fieldset
+          .group
+            .columns.wat-cf
+              = f.label :password, t("assur.customer.password"), :class => 'label'
+              = f.password_field :password, :class => 'text_field'
+              %span.description= t("assur.general.leave_blank_if_you_dont_want_to_change_it")
+          .group
+            .columns.wat-cf
+              = f.label :password_confirmation, t("assur.customer.confirmpassword"), :class => 'label'
+              = f.password_field :password_confirmation, :class => 'text_field'        
+          .group
+            .columns.wat-cf
+              = f.label :current_password, t("assur.customer.currentpassword"), :class => 'label'
+              = f.password_field :current_password, :class => 'text_field'
+              %span.description= t("assur.general.we_need_current_password_to_change_it")
         .group
           .columns.wat-cf
             = f.label :language_id, t("assur.customer.language"), :class => 'label'
