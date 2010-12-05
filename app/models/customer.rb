@@ -6,6 +6,8 @@ class Customer < ActiveRecord::Base
   belongs_to :nationality
   belongs_to :title
   
+  has_many :folders
+  
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :sex
   accepts_nested_attributes_for :civilstatus
