@@ -35,6 +35,8 @@ class CustomersController < ApplicationController
     @customer.build_language
     @customer.build_nationality
     @customer.build_title
+    
+    @folder = Folder.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +56,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_url, :notice => "#{t('assur.customer.successfully_created')}." }
+        format.html { redirect_to edit_customer_url(@customer), :notice => "#{t('assur.customer.successfully_created')}." }
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
         format.html { render :action => "new" }
@@ -70,7 +72,8 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        format.html { redirect_to customers_url, :notice => "#{t('assur.customer.successfully_updated')}." }
+        
+        format.html { redirect_to edit_customer_url(@customer), :notice => "#{t('assur.customer.successfully_updated')}." }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -89,5 +92,16 @@ class CustomersController < ApplicationController
       format.html { redirect_to(customers_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def autocomplete
+    @query = params[:query]
+    @customers = Customer.where('firstname like ?', "%#{@query}%")
+    render :json => {
+      :query => 'e',
+      :suggestions => @customers.collect{|c| "#{c.firstname} #{c.lastname}"},
+      :data => @customers.collect(&:id)
+    }
+    
   end
 end

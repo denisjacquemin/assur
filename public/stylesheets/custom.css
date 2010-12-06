@@ -67,3 +67,22 @@
   padding:5px 10px;
 }
 
+#header {
+    background: #ccc;
+}
+
+.blue-box {
+    border: 1px solid #C0D1EC;
+    background: #F2F5FB;
+    padding: 6px 10px 2px;
+}
+
+.blue-box h2 {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif;
+}
+
+.blue {
+    background: #EDF3FE;
+}

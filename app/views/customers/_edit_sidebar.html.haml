@@ -1,0 +1,5 @@
+.block
+  %button.button{:type => "button", :onclick => "window.location.href = '/folders/new?c=#{@customer.id}'"}
+    = image_tag("web-app-theme/icons/folder_add.png", :alt => "#{raw t("assur.folder.add")}")
+    = "#{t("assur.folder.add")}"
+  

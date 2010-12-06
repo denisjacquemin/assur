@@ -1,8 +1,11 @@
 Assur::Application.routes.draw do
+  resources :folders
+
   resources :companies
 
   devise_for :users
 
+  match 'customers/autocomplete' => 'customers#autocomplete'
   resources :customers
 
   # The priority is based upon order of creation:

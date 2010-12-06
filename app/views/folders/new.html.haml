@@ -1,0 +1,9 @@
+.block
+  .content
+    %h2.title
+      = t("assur.general.new")
+      = t("assur.folder.folder")
+    .inner
+      .inner
+        = form_for @folder, :url => folders_path, :html => { :class => :form } do |f|
+          = render :partial => "form", :locals => {:f => f}

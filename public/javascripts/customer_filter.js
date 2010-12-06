@@ -35,9 +35,9 @@ var CustomerFilter = Class.create({
         })
         
         if (!found) {
-            r.hide();
+            Effect.BlindUp(r, { duration: 1.0 });//r.hide();
         } else {
-            r.show();
+            Effect.BlindDown(r, { duration: 1.0 });//r.show();
         }
     });
   },
