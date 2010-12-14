@@ -10,3 +10,9 @@ document.observe("dom:loaded", function() {
 
 
 });
+
+function loadBrandsByCategory(brandId) {
+    new Ajax.Updater('folder_brands_brand_id', '/brands', {
+      parameters: { text: $F('text') }
+    });
+}

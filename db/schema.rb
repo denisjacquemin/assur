@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205160502) do
+ActiveRecord::Schema.define(:version => 20101214064838) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(:version => 20101205160502) do
     t.string   "zipcode"
     t.string   "city"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20101205160502) do
     t.string   "name"
     t.integer  "address_id"
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contracts", :force => true do |t|
+    t.integer  "brand_id"
+    t.integer  "folder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

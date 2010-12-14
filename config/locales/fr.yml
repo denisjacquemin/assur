@@ -7,6 +7,7 @@ fr:
       save: Sauver
       cancel: Annuler
       details: Details
+      add: Ajouter
       forgotpassword: Oublie mon mot de passe
       notyetregistered: Pas encore inscrit?
       profile: Profile
@@ -56,6 +57,11 @@ fr:
     folder:
         folder: Dossier
         add: Créér dossier
+        category: Categorie
+        brands: Produits
+        brand: produit
+        select_category: Selectionner une categorie
+        
       
     all_customers: Tous les Clients
     delete: Effacer

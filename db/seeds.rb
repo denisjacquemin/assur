@@ -35,6 +35,16 @@ Nationality.create(:name => 'Francais')
 Nationality.create(:name => 'Luxembourgeois')
 Nationality.create(:name => 'Neerlandais')
 
+Category.create(:name => 'Auto RC')
+Category.create(:name => 'Auto RC + Omnium')
+Category.create(:name => 'Solde restant du')
+Category.create(:name => 'Occupant voiture')
+Category.create(:name => 'RC 2 roues + PJ')
+Category.create(:name => 'RC prof. medic/paramedic')
+Category.create(:name => 'Incendie')
+Category.create(:name => 'Inc commerce')
+
+
 
 
 

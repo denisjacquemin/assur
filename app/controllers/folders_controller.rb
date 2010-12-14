@@ -25,6 +25,7 @@ class FoldersController < ApplicationController
   # GET /folders/new.xml
   def new
     @folder = Folder.new
+    @contract = Contract.new
     
     if params[:c]
       @folder.customer = Customer.find(params[:c])
@@ -83,5 +84,8 @@ class FoldersController < ApplicationController
       format.html { redirect_to(folders_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def add_contract
   end
 end

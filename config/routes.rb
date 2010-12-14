@@ -1,4 +1,5 @@
 Assur::Application.routes.draw do
+  match 'folders/add_contract' => 'folders#add_contract', :as => 'add_contract'
   resources :folders
 
   resources :companies

@@ -22,9 +22,15 @@ sur base du tag v0.1
   address_id
   comment
   
+- Ajout du model category
+  id
+  name 
+  
 - Ajout du model Brand
   id
+  name
   company_id
+  category_id
   
 - Ajout du model Contact
   id

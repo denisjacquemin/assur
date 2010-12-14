@@ -35,8 +35,6 @@ class CustomersController < ApplicationController
     @customer.build_language
     @customer.build_nationality
     @customer.build_title
-    
-    @folder = Folder.new
 
     respond_to do |format|
       format.html # new.html.erb
