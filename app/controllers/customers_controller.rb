@@ -45,6 +45,7 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
+    @folder = Folder.new(:customer_id => @customer.id)
   end
 
   # POST /customers

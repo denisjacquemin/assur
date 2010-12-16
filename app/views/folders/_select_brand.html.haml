@@ -1,10 +1,10 @@
 = form_for @contract, :url => add_contract_path, :html => { :class => :form }, :remote => true do |c|
   .block.notice
-    %h3= "#{t('assur.general.add')} #{t('assur.folder.brand')}"
+    %h3= "#{t('assur.general.add')} #{t('assur.folder.brand')} #{t('assur.folder.to_folder')}"
     .content
-      .group
-        = label_tag :category_id, t('assur.folder.category'), :class => 'label'
-        = collection_select(:brand, :category_id, Category.all, :id, :name, :class => 'text_field', :onchange => "loadBrandsByCategory(this.value);")
+      .group.top
+        = label_tag :category_id, t('assur.folder.categories'), :class => 'label'
+        = collection_select :brand, :category_id, Category.all, :id, :name, {}, {:onchange => "#{remote_function :url => brands_by_category_path(:category_id => 1), :success =>"buildOptions(request, 'contract_brand_id')"}"}
       .group
         = c.label :brand_id, t('assur.folder.brands'), :class => 'label'
         = c.collection_select(:brand_id, Brand.all, :id, :name, :class => 'text_field', :prompt => t('assur.folder.select_category'))

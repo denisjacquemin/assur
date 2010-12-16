@@ -1,4 +1,7 @@
 Assur::Application.routes.draw do
+  match 'brands_by_category' => 'brands#filter_by_category'
+  resources :brands
+
   match 'folders/add_contract' => 'folders#add_contract', :as => 'add_contract'
   resources :folders
 

@@ -8,6 +8,7 @@ fr:
       cancel: Annuler
       details: Details
       add: Ajouter
+      created_on: cree le
       forgotpassword: Oublie mon mot de passe
       notyetregistered: Pas encore inscrit?
       profile: Profile
@@ -56,11 +57,15 @@ fr:
       successfully_updated: Client mis a jour avec succes
     folder:
         folder: Dossier
+        folders: Dossiers
         add: Créér dossier
         category: Categorie
+        categories: Categories
         brands: Produits
         brand: produit
         select_category: Selectionner une categorie
+        name: Nom de dossier
+        to_folder: au dossier
         
       
     all_customers: Tous les Clients

@@ -25,11 +25,6 @@ class FoldersController < ApplicationController
   # GET /folders/new.xml
   def new
     @folder = Folder.new
-    @contract = Contract.new
-    
-    if params[:c]
-      @folder.customer = Customer.find(params[:c])
-    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +35,7 @@ class FoldersController < ApplicationController
   # GET /folders/1/edit
   def edit
     @folder = Folder.find(params[:id])
+    @contract = Contract.new(:folder_id => @folder.id)
   end
 
   # POST /folders
@@ -49,7 +45,7 @@ class FoldersController < ApplicationController
 
     respond_to do |format|
       if @folder.save
-        format.html { redirect_to(@folder, :notice => 'Folder was successfully created.') }
+        format.html { redirect_to(edit_folder_path(@folder), :notice => 'Folder was successfully created.') }
         format.xml  { render :xml => @folder, :status => :created, :location => @folder }
       else
         format.html { render :action => "new" }

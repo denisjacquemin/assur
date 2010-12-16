@@ -44,6 +44,10 @@ Category.create(:name => 'RC prof. medic/paramedic')
 Category.create(:name => 'Incendie')
 Category.create(:name => 'Inc commerce')
 
+Brand.create(:name => 'Axa 1', :category_id => 1)
+Brand.create(:name => 'Axa 2', :category_id => 2)
+Brand.create(:name => 'Axa 3', :category_id => 3)
+
 
 
 

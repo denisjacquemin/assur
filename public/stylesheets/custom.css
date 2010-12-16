@@ -86,3 +86,11 @@
 .blue {
     background: #EDF3FE;
 }
+
+.light_label {
+    font-size:12px;
+}
+
+#sidebar .block .top {
+    margin-top: 15px;
+}
