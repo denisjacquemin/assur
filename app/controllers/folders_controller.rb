@@ -83,5 +83,7 @@ class FoldersController < ApplicationController
   end
   
   def add_contract
+    @contract = Contract.new(params[:contract])
+    @contract.save
   end
 end

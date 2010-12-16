@@ -13,22 +13,7 @@ document.observe("dom:loaded", function() {
   
 });
 
-
-//new Ajax.Updater('options', '/testing/update_options', {asynchronous:true, evalScripts:true})">
-
-// returns a list of brands filtered by category_id
-function loadBrandsByCategory(category_id) {
-    new Ajax.Updater('folder_brands_brand_id', '/brands_by_category', {
-      parameters: { category_id: category_id },
-      onSuccess: function(t) {
-          var json = t.responseText.evalJSON();
-          json.each(function(e) {
-            alert(a.brand.name);
-          });
-      }
-    });
-}
-
+// build a collection of <option> and add it to the target (<select>)
 function buildOptions(request, target) {
     var data = request.responseText.evalJSON();
     var select = $(target);

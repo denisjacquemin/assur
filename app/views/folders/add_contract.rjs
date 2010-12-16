@@ -1,1 +1,1 @@
-page.insert_html(:top, :contracts, :partial => 'contract')
+page.insert_html(:top, :contracts, :partial => 'contract', :locals => {:contract => @contract})

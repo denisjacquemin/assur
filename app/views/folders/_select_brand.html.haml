@@ -6,6 +6,7 @@
         = label_tag :category_id, t('assur.folder.categories'), :class => 'label'
         = collection_select :brand, :category_id, Category.all, :id, :name, {}, {:onchange => "#{remote_function :url => brands_by_category_path(:category_id => 1), :success =>"buildOptions(request, 'contract_brand_id')"}"}
       .group
+        = c.hidden_field :folder_id
         = c.label :brand_id, t('assur.folder.brands'), :class => 'label'
         = c.collection_select(:brand_id, Brand.all, :id, :name, :class => 'text_field', :prompt => t('assur.folder.select_category'))
       .group.navform.wat-cf

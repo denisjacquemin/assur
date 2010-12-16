@@ -2,8 +2,6 @@
   .group
     .columns.wat-cf 
       .column.left
-        = f.label :firstname, t("assur.customer.firstname"), :class => :label
-        = f.text_field :firstname, :class => 'text_field focus'
+        = "#{contract.brand.category.name} / #{contract.brand.name}"
       .column.right
-        = f.label :lastname, t("assur.customer.lastname"), :class => :label
-        = f.text_field :lastname, :class => 'text_field'
+        
