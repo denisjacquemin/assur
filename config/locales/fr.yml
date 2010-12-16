@@ -66,6 +66,7 @@ fr:
         select_category: Selectionner une categorie
         name: Nom de dossier
         to_folder: au dossier
+        products: Produits
         
       
     all_customers: Tous les Clients
