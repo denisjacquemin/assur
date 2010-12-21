@@ -32,15 +32,4 @@ sur base du tag v0.1
   company_id
   category_id
   
-- Ajout du model Contact
-  id
-  firstname
-  lastname
-  company_id
-  email
-  phone1
-  phone2
-  fax
-  comment
-  
 remove show action from customer et prevoir un acces en readonly a l'appli

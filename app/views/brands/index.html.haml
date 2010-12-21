@@ -1,0 +1,29 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("assur.general.list")}", brands_path
+      %li= link_to "#{t("assur.general.new")}", new_brand_path
+  .content
+    %h2.title
+      = t("assur.general.listing")
+      = t("assur.brand.products")
+      #quick-search.form 
+        = label_tag :quicksearch, t("assur.customer.quick_search")
+        = text_field_tag :quicksearch, '', :class => 'text_field focus', :onKeyUp => 'quicksearch.filter(this.value);'
+    .inner
+      %table.table{:id => 'qs-target'}
+        %tr
+          %th= "#{t("assur.brand.Name")} - #{t("assur.brand.product")}"
+          %th= t("assur.brand.Category")
+          %th= t("assur.brand.Company")
+          %th.last &nbsp;
+        - @brands.each do |brand|
+          %tr.row{:class => cycle("odd", "even")}
+            %td= link_to brand.name, edit_brand_path(brand)
+            %td= brand.category.name
+            %td= brand.company.name unless brand.company.nil?
+            %td.last
+              \#{link_to "#{t("assur.general.delete")}", brand_path(brand), :method => :delete, :confirm => "#{t("assur.general.are_you_sure")}"}
+      .actions-bar.wat-cf
+        .actions
+- content_for :sidebar, render(:partial => 'index_sidebar')

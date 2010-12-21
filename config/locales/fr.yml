@@ -6,7 +6,8 @@ fr:
       delete: Effacer
       save: Sauver
       cancel: Annuler
-      details: Details
+      details: details
+      Details: Details
       add: Ajouter
       created_on: cree le
       forgotpassword: Oublie mon mot de passe
@@ -15,11 +16,12 @@ fr:
       logout: Deconnexion
       leave_blank_if_you_dont_want_to_change_it: Laisser blanc si vous ne voulez pas le changer
       we_need_current_password_to_change_it: Nous avons besoin de votre mot de passe courant pour pouvoir le changer
-    customer:
+      listing: Listing
       list: Liste
       are_you_sure: Etes vous sur?
-      listing: Listing
+    customer:
       customers: clients
+      Customers: Clients
       customer: client
       quick_search: Recherche rapide
       firstname: Prenom
@@ -45,7 +47,7 @@ fr:
       cellphone: GSM
       fax: Fax
       idnum: Numero de carte d'identitee
-      jobdescription: Job
+      jobdescription: Profession
       comment: Commentaires
       cancelaccount: Annuler mon compte
       email: Email
@@ -56,7 +58,8 @@ fr:
       successfully_created: Client cree avec succes
       successfully_updated: Client mis a jour avec succes
     folder:
-        folder: Dossier
+        folder: dossier
+        Folder: Dossier
         folders: Dossiers
         add: Créér dossier
         category: Categorie
@@ -67,6 +70,17 @@ fr:
         name: Nom de dossier
         to_folder: au dossier
         products: Produits
+    brand:
+        Products: Produits
+        products: produits
+        product: produit
+        Name: Nom
+        Category: Categorie
+        Company: Companie
+        select_company: Selectionner companie
+        successfully_created: Produit cree avec succes
+        successfully_updated: Produit mis a jour avec succes
+        
         
       
     all_customers: Tous les Clients

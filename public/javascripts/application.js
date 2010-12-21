@@ -3,8 +3,8 @@ var quicksearch = null;
 document.observe("dom:loaded", function() {
   
   // init Quick Search on customers/index
-  if ($('quicksearch') != undefined) {
-    quicksearch = new CustomerFilter('customers');
+  if ($('qs-target') != undefined) {
+    quicksearch = new CustomerFilter('qs-target');
     quicksearch.filter($F('quicksearch'));
   }
   
@@ -16,11 +16,13 @@ document.observe("dom:loaded", function() {
 // build a collection of <option> and add it to the target (<select>)
 function buildOptions(request, target) {
     var data = request.responseText.evalJSON();
-    var select = $(target);
+    var oldSelect = $(target);
+    var newSelect = new Element('select', {id: target});
     data.each(function(d, i){
        var opt = new Element('option');
        opt.text = d.brand.name;
        opt.value = d.brand.id;
-       select.options.add(opt);
+       newSelect.options.add(opt);
     });
+    oldSelect.replace(newSelect);
 }

@@ -12,8 +12,8 @@
 .group
   = f.label :name, :class => :label
   = f.text_field :name, :class => 'text_field focus'
-#contracts
-  %h3= t('assur.folder.products')
+%h3= t('assur.folder.products')
+#contracts 
   = render :partial => "contract", :collection => @folder.contracts 
 .group.navform.wat-cf
   %button.button{:type => "submit"}

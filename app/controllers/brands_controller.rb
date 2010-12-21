@@ -46,10 +46,13 @@ class BrandsController < ApplicationController
   # POST /brands.xml
   def create
     @brand = Brand.new(params[:brand])
+    if params[:brand][:company_id].include?('#')
+      @brand.company = Company.create(:name => params[:brand][:company_id].split('#')[2])
+    end
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to(@brand, :notice => 'Brand was successfully created.') }
+        format.html { redirect_to edit_brand_url(@brand), :notice => t('assur.brand.successfully_created') }
         format.xml  { render :xml => @brand, :status => :created, :location => @brand }
       else
         format.html { render :action => "new" }
@@ -65,7 +68,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
-        format.html { redirect_to(@brand, :notice => 'Brand was successfully updated.') }
+        format.html { redirect_to edit_brand_url(@brand), :notice => t('assur.brand.successfully_updated') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
