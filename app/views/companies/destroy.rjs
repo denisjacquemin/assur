@@ -1,0 +1,2 @@
+page.replace_html(:companies, :partial => 'company_row', :collection => Company.all)
+page.call 'remove_option_by_value', 'brand_company_id', @company.id

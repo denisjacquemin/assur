@@ -80,6 +80,10 @@ fr:
         select_company: Selectionner companie
         successfully_created: Produit cree avec succes
         successfully_updated: Produit mis a jour avec succes
+    company:
+        Company: Companie
+        Company_name: Nom companie
+        Companies: Companies
         
         
       

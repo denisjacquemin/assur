@@ -74,10 +74,5 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(companies_url) }
-      format.xml  { head :ok }
-    end
   end
 end

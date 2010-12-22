@@ -37,7 +37,7 @@ var CustomerFilter = Class.create({
         if (!found) {
             r.hide();
         } else {
-                r.show();
+            r.show();
         }
     });
   },

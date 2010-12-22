@@ -30,6 +30,7 @@ class BrandsController < ApplicationController
   # GET /brands/new.xml
   def new
     @brand = Brand.new
+    @company = Company.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +41,7 @@ class BrandsController < ApplicationController
   # GET /brands/1/edit
   def edit
     @brand = Brand.find(params[:id])
+    @company = Company.new
   end
 
   # POST /brands
@@ -48,6 +50,9 @@ class BrandsController < ApplicationController
     @brand = Brand.new(params[:brand])
     if params[:brand][:company_id].include?('#')
       @brand.company = Company.create(:name => params[:brand][:company_id].split('#')[2])
+    end
+    if params[:brand][:category_id].include?('#')
+      @brand.category = Category.create(:name => params[:brand][:category_id].split('#')[2])
     end
 
     respond_to do |format|
@@ -65,6 +70,12 @@ class BrandsController < ApplicationController
   # PUT /brands/1.xml
   def update
     @brand = Brand.find(params[:id])
+    if params[:brand][:company_id].include?('#')
+      @brand.company = Company.create(:name => params[:brand][:company_id].split('#')[2])
+    end
+    if params[:brand][:category_id].include?('#')
+      @brand.category = Category.create(:name => params[:brand][:category_id].split('#')[2])
+    end
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])

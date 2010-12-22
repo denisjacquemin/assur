@@ -1,0 +1,10 @@
+.block.notice
+  %h3= t('assur.company.Companies')
+  = form_for @company, :url => companies_path, :remote => true, :html => { :class => :form } do |f|
+    %table.table
+      %thead
+        %tr
+          %th= t('assur.company.Company_name')
+          %th &nbsp;
+      %tbody{:id => 'companies'}
+        = render :partial => 'companies/company_row', :collection => Company.all

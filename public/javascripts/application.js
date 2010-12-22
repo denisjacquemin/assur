@@ -26,3 +26,12 @@ function buildOptions(request, target) {
     });
     oldSelect.replace(newSelect);
 }
+
+// remove an option from a select
+function remove_option_by_value(select, value) {
+    if ($(select) != undefined) {
+        $(select).select('option[value=' + value + ']').invoke('remove');
+        $(select).value = '';
+        
+    }
+}
