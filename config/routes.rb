@@ -5,6 +5,7 @@ Assur::Application.routes.draw do
   match 'folders/add_contract' => 'folders#add_contract', :as => 'add_contract'
   resources :folders
 
+  match 'companies/options' => 'companies#options'
   resources :companies
 
   devise_for :users

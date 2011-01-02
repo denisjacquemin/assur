@@ -94,3 +94,7 @@
 #sidebar .block .top {
     margin-top: 15px;
 }
+
+.table td.right {
+	text-align: right;
+}

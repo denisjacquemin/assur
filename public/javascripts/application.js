@@ -20,8 +20,8 @@ function buildOptions(request, target) {
     var newSelect = new Element('select', {id: target});
     data.each(function(d, i){
        var opt = new Element('option');
-       opt.text = d.brand.name;
-       opt.value = d.brand.id;
+       opt.text = d.name;
+       opt.value = d.id;
        newSelect.options.add(opt);
     });
     oldSelect.replace(newSelect);
@@ -34,4 +34,12 @@ function remove_option_by_value(select, value) {
         $(select).value = '';
         
     }
+}
+
+function reload_options(url, selectId) {
+	new Ajax.Request(url, {
+		onSuccess: function(response) {
+			buildOptions(response, selectId);
+    	}
+	});
 }

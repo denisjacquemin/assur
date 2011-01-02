@@ -75,4 +75,9 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.destroy
   end
+
+  def options
+    companies = Company.order('name DESC')
+    render :json => companies.to_json(:only => [:id, :name])
+  end
 end
