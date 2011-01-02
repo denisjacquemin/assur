@@ -1,7 +1,6 @@
-.group.contract
-  .group
-    .columns.wat-cf 
-      .column.left
-        = "#{contract.brand.category.name} / #{contract.brand.name}"
-      .column.right
+- unless contract.brand.nil?
+  %tr
+    %td= contract.brand_name
+    %td= contract.brand.category_name
+    %td= contract.brand.company_name
         

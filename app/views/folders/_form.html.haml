@@ -13,8 +13,13 @@
   = f.label :name, :class => :label
   = f.text_field :name, :class => 'text_field focus'
 %h3= t('assur.folder.products')
-#contracts 
-  = render :partial => "contract", :collection => @folder.contracts 
+.inner
+  %table.table
+    %tr
+      %th= t("assur.brand.Product")
+      %th= t("assur.brand.Category")
+      %th= t("assur.brand.Company")
+    = render :partial => "contract", :collection => @folder.contracts 
 .group.navform.wat-cf
   %button.button{:type => "submit"}
     = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("assur.general.save")}")
