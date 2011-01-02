@@ -31,6 +31,7 @@ class BrandsController < ApplicationController
   def new
     @brand = Brand.new
     @company = Company.new
+    @category = Category.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +43,7 @@ class BrandsController < ApplicationController
   def edit
     @brand = Brand.find(params[:id])
     @company = Company.new
+    @category = Category.new
   end
 
   # POST /brands

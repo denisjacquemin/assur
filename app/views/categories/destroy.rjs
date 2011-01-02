@@ -1,0 +1,2 @@
+page.replace_html(:categories, :partial => 'category_row', :collection => Category.all)
+page.call 'reload_options', '/categories/options', 'brand_category_id'

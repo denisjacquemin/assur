@@ -1,0 +1,10 @@
+.block.notice
+  %h3= t('assur.category.Categories')
+  = form_for @category, :url => categories_path, :remote => true, :html => { :class => :form } do |f|
+    %table.table
+      %thead
+        %tr
+          %th= t('assur.category.Category_name')
+          %th &nbsp;
+      %tbody{:id => 'categories'}
+        = render :partial => 'categories/category_row', :collection => Category.all

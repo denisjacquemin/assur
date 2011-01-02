@@ -14,7 +14,7 @@ document.observe("dom:loaded", function() {
 });
 
 // build a collection of <option> and add it to the target (<select>)
-function buildOptions(request, target) {
+function buildOptions(request, target, selectedOptionValue) {
     var data = request.responseText.evalJSON();
     var oldSelect = $(target);
     var newSelect = new Element('select', {id: target});
@@ -25,6 +25,7 @@ function buildOptions(request, target) {
        newSelect.options.add(opt);
     });
     oldSelect.replace(newSelect);
+    newSelect.value = selectedOptionValue;
 }
 
 // remove an option from a select
@@ -37,9 +38,10 @@ function remove_option_by_value(select, value) {
 }
 
 function reload_options(url, selectId) {
+    var selectedOption = $F(selectId);
 	new Ajax.Request(url, {
 		onSuccess: function(response) {
-			buildOptions(response, selectId);
+			buildOptions(response, selectId, selectedOption);
     	}
 	});
 }

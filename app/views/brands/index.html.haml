@@ -20,8 +20,8 @@
         - @brands.each do |brand|
           %tr.row{:class => cycle("odd", "even")}
             %td= link_to brand.name, edit_brand_path(brand)
-            %td= brand.category.name
-            %td= brand.company.name unless brand.company.nil?
+            %td= brand.category_name
+            %td= brand.company_name
             %td.last
               \#{link_to "#{t("assur.general.delete")}", brand_path(brand), :method => :delete, :confirm => "#{t("assur.general.are_you_sure")}"}
       .actions-bar.wat-cf

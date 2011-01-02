@@ -84,6 +84,10 @@ fr:
         Company: Companie
         Company_name: Nom companie
         Companies: Companies
+    category:
+        Category: Categorie
+        Category_name: Nom categorie
+        Categories: Categories
         
         
       

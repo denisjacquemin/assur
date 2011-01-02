@@ -1,4 +1,7 @@
 Assur::Application.routes.draw do
+  match 'categories/options' => 'categories#options'
+  resources :categories
+
   match 'brands_by_category' => 'brands#filter_by_category'
   resources :brands
 
