@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Example</title>
+<script src="http://www.java.com/js/deployJava.js"></script>
+<script type="text/javascript" src="be_belgium_eid.js"></script>
+<script type="text/javascript" language="javascript">
+
+var cardReader = new be.belgium.eid.CardReader();
+
+function noCardPresentHandler() {
+	window.alert("No card present!");
+}
+cardReader.setNoCardPresentHandler(noCardPresentHandler);
+
+function noReaderDetectedHandler() {
+	window.alert("No reader detected!");
+}
+cardReader.setNoReaderDetectedHandler(noReaderDetectedHandler);
+
+function appletNotFoundHandler() {
+	window.alert("Applet not found!");
+}
+cardReader.setAppletNotFoundHandler(appletNotFoundHandler);
+
+function appletExceptionHandler(e) {
+	window.alert("Error reading card!\r\nException: " + e + "\r\nPlease try again.");
+}
+cardReader.setAppletExceptionHandler(appletExceptionHandler);
+
+function readCard() {
+	document.getElementById("content").value = "Please wait ...";
+	var card = cardReader.read();
+	if (card != null) {
+		document.getElementById("content").value = card.toString();
+	} else {
+		document.getElementById("content").value = "No card returned.";
+	}
+}
+
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+if (deployJava.versionCheck("1.6.0_10+") == true) {
+//----------------
+// give the following variables:
+// subdir: the subdirectory where the applet jar file resides
+// jnlpPath: the path to the jnlp file
+// ex: subdir="appletDir";
+//     jnlpPath=subdir;
+//----------------
+var subdir="";
+var jnlpPath=subdir;
+
+//----------------
+// - get the href of this page
+// - strip off the name of this page
+//----------------
+var myloc 	 = window.location.href;
+var locarray = myloc.split("/");
+delete locarray[(locarray.length-1)];
+var url = locarray.join("/");
+
+	document.writeln('<applet code="org.jdesktop.applet.util.JNLPAppletLauncher"');
+	document.writeln('codebase = "' + url + subdir + '"');
+	document.writeln('width  ="140"');
+	document.writeln('height ="200"');
+	document.writeln('name   = "BEIDAppletLauncher"');
+	document.writeln('id   = "BEIDAppletLauncher"'); // add id attribute !!!
+	document.writeln('archive="beid35libJava.jar,BEID_Applet.jar">');
+
+	document.writeln('<param name="codebase_lookup" value="false">');
+	document.writeln('<param name="subapplet.classname" value="be.belgium.beid.BEID_Applet">');
+	document.writeln('<param name="progressbar" value="true">');
+
+	document.writeln('<param name="debug" value="false"/>');
+	document.writeln('<param name="Reader" value=""/>');
+	document.writeln('<param name="OCSP" value="-1"/>');
+	document.writeln('<param name="CRL" value="-1"/>');
+	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + 'beid_java_plugin.jnlp" />');
+	document.writeln('</applet>');
+} else {
+	document.writeln("This example requires JRE 1.6.0_10 (JRE 6 Update 10) or higher.");
+}
+
+</script>
+<br>
+<br>
+<input type="button" onclick="javascript:readCard()" value="Read Card" title="Read Card"/>
+<br>
+<br>
+Card content:<br>
+<textarea id="content" cols=80 rows=20 wrap="virtual">&nbsp;</textarea><br>
+<br>
+This example does not use the JNLPAppletLauncher.<br>
+It only uses JNLP support present in the next-generation Java Plug-in (JRE 6 Update 10).
+</body>
+</html>

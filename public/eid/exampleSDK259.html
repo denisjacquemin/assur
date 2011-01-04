@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Example applet SDK 259</title>
+<script type="text/javascript" src="..\src\be_belgium_eid.js"></script>
+<script type="text/javascript" src="..\src\be_belgium_eid_259.js"></script>
+<script type="text/javascript" language="javascript">
+
+var cardReader = new be.belgium.eid.CardReader259();
+
+function noCardPresentHandler() {
+	window.alert("No card present!");
+}
+cardReader.setNoCardPresentHandler(noCardPresentHandler);
+
+function noReaderDetectedHandler() {
+	window.alert("No reader detected!");
+}
+cardReader.setNoReaderDetectedHandler(noReaderDetectedHandler);
+
+/*
+function appletNotFoundHandler() {
+	window.alert("Applet not found!");
+}
+cardReader.setAppletNotFoundHandler(appletNotFoundHandler);
+
+function appletExceptionHandler(e) {
+	window.alert("Error reading card!\r\nException: " + e + "\r\nPlease try again.");
+}
+cardReader.setAppletExceptionHandler(appletExceptionHandler);
+*/
+
+function readCard() {
+	document.getElementById("content").value = "Please wait ...";
+	var card = cardReader.read();
+	if (card != null) {
+		document.getElementById("content").value = card.toString();
+	} else {
+		document.getElementById("content").value = "No card returned.";
+	}
+}
+
+</script>
+</head>
+<body>
+<applet
+  codebase = "."
+  archive  = "beidlib.jar"
+  code     = "be.belgium.eid.BEID_Applet.class"
+  name     = "BEIDApplet"
+  id       = "BEIDApplet"
+  width    = "140"
+  height   = "200"
+  hspace   = "0"
+  vspace   = "0"
+  align    = "middle"
+>
+<param name="Reader" value="">
+<param name="OCSP" value="-1">
+<param name="CRL" value="-1">
+<param name="DisableWarning" value="true">
+</applet>
+<br>
+<br>
+<input type="button" onclick="javascript:readCard()" value="Read Card" title="Read Card"/>
+<br>
+<br>
+Card content:<br>
+<textarea id="content" cols=80 rows=20 wrap="virtual">&nbsp;</textarea>
+
+</body>
+</html>

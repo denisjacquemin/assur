@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Example DateFormatter</title>
+<script type="text/javascript" src="..\src\be_belgium_eid.js"></script>
+<script type="text/javascript" language="javascript">
+
+var DDMMYYYY_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.DDMMYYYY);
+var MMDDYYYY_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.MMDDYYYY);
+var YYYYMMDD_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.YYYYMMDD);
+
+var DD_MM_YYYY_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.DD_MM_YYYY);
+var MM_DD_YYYY_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.MM_DD_YYYY);
+var YYYY_MM_DD_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.YYYY_MM_DD);
+
+var EID_BIRTH_DATE_formatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.EID_BIRTH_DATE);
+
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+document.writeln("<u>Formatting current date using different formats:</u><br><br>");
+var d = new Date();
+
+document.writeln("DDMMYYYY: " + DDMMYYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("MMDDYYYY: " + MMDDYYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("YYYYMMDD: " + YYYYMMDD_formatter.format(d));
+
+document.writeln("<br>");
+document.writeln("<br>");
+
+document.writeln("DD_MM_YYYY: " + DD_MM_YYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("MM_DD_YYYY: " + MM_DD_YYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("YYYY_MM_DD: " + YYYY_MM_DD_formatter.format(d));
+
+document.writeln("<br>");
+document.writeln("<br>");
+
+DD_MM_YYYY_formatter.setDateSeparator("-");
+MM_DD_YYYY_formatter.setDateSeparator("-");
+YYYY_MM_DD_formatter.setDateSeparator("-");
+document.writeln("DD_MM_YYYY: " + DD_MM_YYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("MM_DD_YYYY: " + MM_DD_YYYY_formatter.format(d));
+document.writeln("<br>");
+document.writeln("YYYY_MM_DD: " + YYYY_MM_DD_formatter.format(d));
+
+document.writeln("<br>");
+document.writeln("<br>");
+
+EID_BIRTH_DATE_formatter.setLanguage(be.belgium.eid.language.DUTCH);
+document.writeln("EID_BIRTH_DATE (Dutch): " + EID_BIRTH_DATE_formatter.format(d));
+document.writeln("<br>");
+EID_BIRTH_DATE_formatter.setLanguage(be.belgium.eid.language.FRENCH);
+document.writeln("EID_BIRTH_DATE (French): " + EID_BIRTH_DATE_formatter.format(d));
+document.writeln("<br>");
+EID_BIRTH_DATE_formatter.setLanguage(be.belgium.eid.language.GERMAN);
+document.writeln("EID_BIRTH_DATE (German): " + EID_BIRTH_DATE_formatter.format(d));
+
+document.writeln("<br>");
+document.writeln("<br>");
+
+document.writeln("<u>Parsing dates using different formats:</u><br><br>");
+
+var newYear2009 = DD_MM_YYYY_formatter.parse("01/01/2009");
+document.writeln("New Year 2009: " + newYear2009);
+document.writeln("<br>");
+var xmas2009 = DD_MM_YYYY_formatter.parse("25/12/2009");
+document.writeln("Christmas 2009: " + xmas2009);
+document.writeln("<br>");
+try {
+	var faultDate = DD_MM_YYYY_formatter.parse("25122009");
+} catch (e) {
+	document.writeln("Failed to parse");
+}
+
+document.writeln("<br>");
+document.writeln("<br>");
+
+var newYear2010 = EID_BIRTH_DATE_formatter.parse("01 JAN 2010");
+document.writeln("New Year 2010: " + newYear2010);
+document.writeln("<br>");
+var xmas2010 = EID_BIRTH_DATE_formatter.parse("25 DEZ 2010");
+document.writeln("Christmas 2010: " + xmas2010);
+document.writeln("<br>");
+try {
+	var faultDate = DD_MM_YYYY_formatter.parse("25 DEZEMBER 2010");
+} catch (e) {
+	document.writeln("Failed to parse");
+}
+</script>
+<br>
+<br>
+</body>
+</html>

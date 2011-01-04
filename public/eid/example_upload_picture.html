@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>Example upload eID picture</title>
+<script type="text/javascript" src="..\src\be_belgium_eid.js"></script>
+<script type="text/javascript" src="..\src\base64.js"></script>
+<script type="text/javascript" language="javascript">
+
+var cardReader = new be.belgium.eid.CardReader();
+
+function noCardPresentHandler() {
+	window.alert("No card present!");
+}
+cardReader.setNoCardPresentHandler(noCardPresentHandler);
+
+function noReaderDetectedHandler() {
+	window.alert("No reader detected!");
+}
+cardReader.setNoReaderDetectedHandler(noReaderDetectedHandler);
+
+function appletNotFoundHandler() {
+	window.alert("Applet not found!");
+}
+cardReader.setAppletNotFoundHandler(appletNotFoundHandler);
+
+function appletExceptionHandler(e) {
+	window.alert("Error reading card!\r\nException: " + e + "\r\nPlease try again.");
+}
+cardReader.setAppletExceptionHandler(appletExceptionHandler);
+
+function clearInputFields() {
+	document.getElementById("surname").value = "";
+	document.getElementById("name").value = "";
+	document.getElementById("encoded_picture").value = "";
+}
+
+function readCard() {
+	clearInputFields();
+
+	var card = cardReader.read();
+	if (card != null) {
+		if (card instanceof be.belgium.eid.EIDCard) {
+			document.getElementById("surname").value = card.getSurname();
+			document.getElementById("name").value = card.getFirstName1();
+			if (typeof(base64) != "undefined") {
+				// use URL safe encoding
+				document.getElementById("encoded_picture").value = base64.encode(card.getPicture(), false, true);
+			} else {
+				window.alert("base64 object not defined");
+			}
+		} else {
+			document.getElementById("surname").value = card.getSurname();
+			document.getElementById("name").value = card.getName();
+			// There is no picture on SIS cards.
+		}
+	} else {
+		window.alert("No card returned.");
+	}
+}
+
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+//----------------
+// give the following variables:
+// subdir: the subdirectory where the applet jar file resides
+// jnlpPath: the path to the jnlp file
+// ex: subdir="appletDir";
+//     jnlpPath=subdir;
+//----------------
+var subdir="";
+var jnlpPath=subdir;
+
+//----------------
+// - get the href of this page
+// - strip off the name of this page
+//----------------
+var myloc 	 = window.location.href;
+var locarray = myloc.split("/");
+delete locarray[(locarray.length-1)];
+var url = locarray.join("/");
+
+	document.writeln('<applet code="org.jdesktop.applet.util.JNLPAppletLauncher"');
+    document.writeln('codebase = "' + url + subdir + '"');
+    document.writeln('width  ="140"');
+    document.writeln('height ="200"');
+    document.writeln('name   = "BEIDAppletLauncher"');
+	document.writeln('id   = "BEIDAppletLauncher"'); // add id attribute !!!
+    document.writeln('archive="applet-launcher.jar,beid35libJava.jar,BEID_Applet.jar">');
+
+	document.writeln('<param name="codebase_lookup" value="false">');
+	document.writeln('<param name="subapplet.classname" value="be.belgium.beid.BEID_Applet">');
+	document.writeln('<param name="progressbar" value="true">');
+	document.writeln('<param name="jnlpNumExtensions" value="1">');
+	document.writeln('<param name="jnlpExtension1" value= "' + url + jnlpPath + '/beid.jnlp">');
+
+	document.writeln('<param name="debug" value="false"/>');
+	document.writeln('<param name="Reader" value=""/>');
+	document.writeln('<param name="OCSP" value="-1"/>');
+	document.writeln('<param name="CRL" value="-1"/>');
+	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + '/beid_java_plugin.jnlp" />');
+	document.writeln('</applet>');
+
+</script>
+<br>
+<br>
+<form method=POST action="upload">
+Surname: <input type=text id=surname><br>
+Name: <input type=text id=name><br><br>
+<input type=hidden id=encoded_picture value="">
+<input type="button" onclick="javascript:readCard()" value="Read Card" title="Read Card"/>
+<input type="submit" value="Upload"/>
+</form>
+<br>
+<br>
+If you want to upload the picture of the eID, you need to encode the bytes of that picture using Base64 url-safe-encoding.<br>
+Standard Base64 encoding is not an option, because this encoding uses + and / characters.<br>
+The + and / characters have a special meaning in URL encoding, and therefore should be avoided.<br>
+More info about Base64 encoding and decoding at <a href="http://en.wikipedia.org/wiki/Base64">http://en.wikipedia.org/wiki/Base64</a><br>
+<br>
+In this example a javascript file called base64.js is used to encode the eID picture.<br>
+The hidden input field will contain the Base64 url-safe-encoded picture.<br>
+<br>
+At server side the Base64 encoded string can be decoded back to the original picture, but only if you use Base64 url-safe-decoding!<br>
+Standard Base64 decoding can not be used!<br>
+I used a public domain java Base64 decoder: <a href="http://iharder.sourceforge.net/current/java/base64/">http://iharder.sourceforge.net/current/java/base64/</a><br>
+The api of this Base64 decoder can found at: <a href="http://iharder.sourceforge.net/current/java/base64/api/index.html">http://iharder.sourceforge.net/current/java/base64/api/index.html</a><br>
+<br>
+An example on how to use this Base64 decoder to decode the Base64 encoded string:<br>
+<pre>
+	String encodedPictureString = (String)request.getParameter("encoded_picture");
+	byte[] pictureByteArray = Base64.decode(encodedPictureString, Base64.URL_SAFE);
+</pre>
+<br>
+<u>Remarks:</u><br>
+1. The Base64 encoding works in Firefox and Opera without a problem.<br>
+But in Internet Explorer, the Base64 encoding will only work if JRE 6 Update 10 (Java Runtime Environment 1.6.0_10) or higher is installed<br> 
+and if the Next-Generation Java Plug-in is enabled (this is the default setting) in the Java Control Panel.<br>
+<br>
+2. The code for base64.js can be downloaded at <a href="http://hellerim.net/base64_src.php">http://hellerim.net/base64_src.php</a><br>
+Small modifications needs to be done. Please keep the copyright statement intact.<br>
+Put the following code in comments:<br>
+<pre>
+/*
+try { 
+  if (system.utility.base64 == null) {
+    throw new Error('');
+  };
+} catch(e) { // don't install twice
+  // dependencies
+  try {
+    eval('core');
+  } catch(e) {
+    throw new Error('base64: class \'core\' not installed');
+  }
+*/
+</pre>
+and at the bottom line:<br>
+<pre>
+/*
+core.installClass(base64);
+
+} // end catch
+*/
+</pre>
+<br>
+<br>
+</body>
+</html>

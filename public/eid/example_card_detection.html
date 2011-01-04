@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Example card detection</title>
+<script type="text/javascript" src="be_belgium_eid.js"></script>
+<script type="text/javascript" language="javascript">
+
+var cardReader = new be.belgium.eid.CardReader();
+
+var appletDetectionTimeout = 2000; // 2000 ms or 2 seconds
+var cardDetectionTimeout = 2000; // 2000 ms or 2 seconds
+var cardDetectionIntervalId = -1;
+var previousCardPresence = false;
+
+function waitUntilAppletIsActive() {
+	var applet = document.getElementById("BEIDAppletLauncher");
+	var isActive = false;
+
+	if (applet) {
+		if (typeof(applet.isActive) != "undefined") {
+			try {
+				isActive = applet.isActive();
+			} catch (e) {
+				isActive = false;
+				try {
+					isActive = applet.isActive;
+				} catch (e) {
+					isActive = false;
+				}
+			}
+		}
+	}
+
+	if (isActive) {
+		startCardDetection();
+	} else {
+		window.setTimeout(waitUntilAppletIsActive, appletDetectionTimeout);
+	}
+}
+
+function startCardDetection() {
+	cardDetectionIntervalId = window.setInterval(detectCardPresence, cardDetectionTimeout);
+}
+
+function stopCardDetection() {
+	if (cardDetectionIntervalId != -1) {
+		window.clearInterval(cardDetectionIntervalId); // stop function repetition
+		cardDetectionIntervalId = -1;
+	}
+}
+
+function detectCardPresence() {
+	var currentCardPresence = cardReader.isCardPresent();
+	if (previousCardPresence != currentCardPresence) {
+		stopCardDetection();
+		previousCardPresence = currentCardPresence;
+		if (currentCardPresence) {
+			window.status = "Card is inserted.";
+			document.getElementById("content").value = "Card is inserted.";
+			readCard();
+		} else {
+			window.status = "Card is removed.";
+			document.getElementById("content").value = "Card is removed.";
+			cardReader.reset();
+		}
+		startCardDetection();
+	}
+}
+
+function noCardPresentHandler() {
+	window.alert("No card present!");
+}
+cardReader.setNoCardPresentHandler(noCardPresentHandler);
+
+function noReaderDetectedHandler() {
+	window.alert("No reader detected!");
+}
+cardReader.setNoReaderDetectedHandler(noReaderDetectedHandler);
+
+function appletNotFoundHandler() {
+	window.alert("Applet not found!");
+}
+cardReader.setAppletNotFoundHandler(appletNotFoundHandler);
+
+function appletExceptionHandler(e) {
+	window.alert("Error reading card!\r\nException: " + e + "\r\nPlease try again.");
+}
+cardReader.setAppletExceptionHandler(appletExceptionHandler);
+
+function buttonOnClickHandler() {
+	stopCardDetection();
+	readCard();
+	startCardDetection();
+}
+
+function readCard() {
+	document.getElementById("content").value = "Please wait ...";
+	var card = cardReader.read();
+	if (card != null) {
+		document.getElementById("content").value = card.toString();
+	} else {
+		document.getElementById("content").value = "No card returned.";
+	}
+}
+
+</script>
+</head>
+<body onload="waitUntilAppletIsActive();" onunload="stopCardDetection();">
+<script type="text/javascript" language="javascript">
+
+//----------------
+// give the following variables:
+// subdir: the subdirectory where the applet jar file resides
+// jnlpPath: the path to the jnlp file
+// ex: subdir="appletDir";
+//     jnlpPath=subdir;
+//----------------
+var subdir="";
+var jnlpPath=subdir;
+
+//----------------
+// - get the href of this page
+// - strip off the name of this page
+//----------------
+var myloc 	 = window.location.href;
+var locarray = myloc.split("/");
+delete locarray[(locarray.length-1)];
+var url = locarray.join("/");
+
+	document.writeln('<applet code="org.jdesktop.applet.util.JNLPAppletLauncher"');
+    document.writeln('codebase = "' + url + subdir + '"');
+    document.writeln('width  ="140"');
+    document.writeln('height ="200"');
+    document.writeln('name   = "BEIDAppletLauncher"');
+	document.writeln('id   = "BEIDAppletLauncher"'); // add id attribute !!!
+    document.writeln('archive="applet-launcher.jar,beid35libJava.jar,BEID_Applet.jar">');
+
+	document.writeln('<param name="codebase_lookup" value="false">');
+	document.writeln('<param name="subapplet.classname" value="be.belgium.beid.BEID_Applet">');
+	document.writeln('<param name="progressbar" value="true">');
+	document.writeln('<param name="jnlpNumExtensions" value="1">');
+	document.writeln('<param name="jnlpExtension1" value= "' + url + jnlpPath + 'beid.jnlp">');
+
+	document.writeln('<param name="debug" value="false"/>');
+	document.writeln('<param name="Reader" value=""/>');
+	document.writeln('<param name="OCSP" value="-1"/>');
+	document.writeln('<param name="CRL" value="-1"/>');
+	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + 'beid_java_plugin.jnlp" />');
+	document.writeln('</applet>');
+
+</script>
+<br>
+<br>
+<input type="button" onclick="javascript:buttonOnClickHandler()" value="Read Card" title="Read Card"/>
+<br>
+<br>
+Card content:<br>
+<textarea id="content" cols=80 rows=20 wrap="virtual">&nbsp;</textarea>
+
+</body>
+</html>

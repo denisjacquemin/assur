@@ -1,0 +1,327 @@
+<html>
+<head>
+<title>Example inputfields</title>
+<script type="text/javascript" src="..\src\be_belgium_eid.js"></script>
+<script type="text/javascript" language="javascript">
+
+var cardReader = new be.belgium.eid.CardReader();
+
+function noCardPresentHandler() {
+	window.alert("No card present!");
+}
+cardReader.setNoCardPresentHandler(noCardPresentHandler);
+
+function noReaderDetectedHandler() {
+	window.alert("No reader detected!");
+}
+cardReader.setNoReaderDetectedHandler(noReaderDetectedHandler);
+
+function appletNotFoundHandler() {
+	window.alert("Applet not found!");
+}
+cardReader.setAppletNotFoundHandler(appletNotFoundHandler);
+
+function appletExceptionHandler(e) {
+	window.alert("Error reading card!\r\nException: " + e + "\r\nPlease try again.");
+}
+cardReader.setAppletExceptionHandler(appletExceptionHandler);
+
+function clearInputFields() {
+	document.getElementById("eid_card").checked = false;
+	document.getElementById("eid_cardNumber").value = "";
+	document.getElementById("eid_nationalNumber").value = "";
+	document.getElementById("eid_chipNumber").value = "";
+	document.getElementById("eid_validityBeginDate").value = "";
+	document.getElementById("eid_validityEndDate").value = "";
+	document.getElementById("eid_surname").value = "";
+	document.getElementById("eid_birthdate").value = "";
+	document.getElementById("eid_sex_F").checked = false;
+	document.getElementById("eid_sex_M").checked = false;
+	document.getElementById("eid_white_cane").checked = false;
+	document.getElementById("eid_yellow_cane").checked = false;
+	document.getElementById("eid_extended_minority").checked = false;
+
+	document.getElementById("kids_eid_card").checked = false;
+	document.getElementById("kids_eid_cardNumber").value = "";
+	document.getElementById("kids_eid_nationalNumber").value = "";
+	document.getElementById("kids_eid_chipNumber").value = "";
+	document.getElementById("kids_eid_validityBeginDate").value = "";
+	document.getElementById("kids_eid_validityEndDate").value = "";
+	document.getElementById("kids_eid_surname").value = "";
+	document.getElementById("kids_eid_birthdate").value = "";
+	document.getElementById("kids_eid_sex_F").checked = false;
+	document.getElementById("kids_eid_sex_M").checked = false;
+	document.getElementById("kids_eid_white_cane").checked = false;
+	document.getElementById("kids_eid_yellow_cane").checked = false;
+	document.getElementById("kids_eid_extended_minority").checked = false;
+
+	document.getElementById("foreigner_eid_card").checked = false;
+	document.getElementById("foreigner_eid_cardNumber").value = "";
+	document.getElementById("foreigner_eid_nationalNumber").value = "";
+	document.getElementById("foreigner_eid_chipNumber").value = "";
+	document.getElementById("foreigner_eid_validityBeginDate").value = "";
+	document.getElementById("foreigner_eid_validityEndDate").value = "";
+	document.getElementById("foreigner_eid_surname").value = "";
+	document.getElementById("foreigner_eid_birthdate").value = "";
+	document.getElementById("foreigner_eid_sex_F").checked = false;
+	document.getElementById("foreigner_eid_sex_M").checked = false;
+	document.getElementById("foreigner_eid_white_cane").checked = false;
+	document.getElementById("foreigner_eid_yellow_cane").checked = false;
+	document.getElementById("foreigner_eid_extended_minority").checked = false;
+
+	document.getElementById("sis_card").checked = false;
+	document.getElementById("sis_cardNumber").value = "";
+	document.getElementById("sis_socialSecurityNumber").value = "";
+	document.getElementById("sis_validityBeginDate").value = "";
+	document.getElementById("sis_validityEndDate").value = "";
+	document.getElementById("sis_surname").value = "";
+	document.getElementById("sis_birthdate").value = "";
+	document.getElementById("sis_sex_F").checked = false;
+	document.getElementById("sis_sex_M").checked = false;
+}
+
+function readCard() {
+	clearInputFields();
+	document.getElementById("content").value = "Please wait ...";
+
+	var dateFormatter = new be.belgium.eid.DateFormatter(be.belgium.eid.dateFormat.DD_MM_YYYY);
+	var card = cardReader.read();
+	if (card != null) {
+
+		if (card instanceof be.belgium.eid.KidsEIDCard) {
+			window.alert("card is a kids eID.");
+		}
+		if (card instanceof be.belgium.eid.ForeignerEIDCard) {
+			window.alert("card is a foreigner eID.");
+		}
+		if (card instanceof be.belgium.eid.EIDCard) {
+			window.alert("card is an eID card.");
+		}
+		if (card instanceof be.belgium.eid.SISCard) {
+			window.alert("card is a SIS card.");
+		}
+
+		if (card instanceof be.belgium.eid.KidsEIDCard) {
+			document.getElementById("kids_eid_card").checked = true;
+			document.getElementById("kids_eid_cardNumber").value = card.getCardNumber();
+			document.getElementById("kids_eid_nationalNumber").value = card.getNationalNumber();
+			document.getElementById("kids_eid_chipNumber").value = card.getChipNumber();
+			document.getElementById("kids_eid_validityBeginDate").value = dateFormatter.format(card.getValidityBeginDate());
+			document.getElementById("kids_eid_validityEndDate").value = dateFormatter.format(card.getValidityEndDate());
+			document.getElementById("kids_eid_surname").value = card.getSurname();
+			document.getElementById("kids_eid_birthdate").value = dateFormatter.format(card.getBirthDate());
+			if (card.getSex() == be.belgium.eid.sex.FEMALE)
+				document.getElementById("kids_eid_sex_F").checked = true;
+			else
+				document.getElementById("kids_eid_sex_M").checked = true;
+			document.getElementById("kids_eid_white_cane").checked = card.getWhiteCane();
+			document.getElementById("kids_eid_yellow_cane").checked = card.getYellowCane();
+			document.getElementById("kids_eid_extended_minority").checked = card.getExtendedMinority();
+		} else if (card instanceof be.belgium.eid.ForeignerEIDCard) {
+			document.getElementById("foreigner_eid_card").checked = true;
+			document.getElementById("foreigner_eid_cardNumber").value = card.getCardNumber();
+			document.getElementById("foreigner_eid_nationalNumber").value = card.getNationalNumber();
+			document.getElementById("foreigner_eid_chipNumber").value = card.getChipNumber();
+			document.getElementById("foreigner_eid_validityBeginDate").value = dateFormatter.format(card.getValidityBeginDate());
+			document.getElementById("foreigner_eid_validityEndDate").value = dateFormatter.format(card.getValidityEndDate());
+			document.getElementById("foreigner_eid_surname").value = card.getSurname();
+			document.getElementById("foreigner_eid_birthdate").value = dateFormatter.format(card.getBirthDate());
+			if (card.getSex() == be.belgium.eid.sex.FEMALE)
+				document.getElementById("foreigner_eid_sex_F").checked = true;
+			else
+				document.getElementById("foreigner_eid_sex_M").checked = true;
+			document.getElementById("foreigner_eid_white_cane").checked = card.getWhiteCane();
+			document.getElementById("foreigner_eid_yellow_cane").checked = card.getYellowCane();
+			document.getElementById("foreigner_eid_extended_minority").checked = card.getExtendedMinority();
+		} else if (card instanceof be.belgium.eid.EIDCard) {
+			document.getElementById("eid_card").checked = true;
+			document.getElementById("eid_cardNumber").value = card.getCardNumber();
+			document.getElementById("eid_nationalNumber").value = card.getNationalNumber();
+			document.getElementById("eid_chipNumber").value = card.getChipNumber();
+			document.getElementById("eid_validityBeginDate").value = dateFormatter.format(card.getValidityBeginDate());
+			document.getElementById("eid_validityEndDate").value = dateFormatter.format(card.getValidityEndDate());
+			document.getElementById("eid_surname").value = card.getSurname();
+			document.getElementById("eid_birthdate").value = dateFormatter.format(card.getBirthDate());
+			if (card.getSex() == be.belgium.eid.sex.FEMALE)
+				document.getElementById("eid_sex_F").checked = true;
+			else
+				document.getElementById("eid_sex_M").checked = true;
+			document.getElementById("eid_white_cane").checked = card.getWhiteCane();
+			document.getElementById("eid_yellow_cane").checked = card.getYellowCane();
+			document.getElementById("eid_extended_minority").checked = card.getExtendedMinority();
+		} else {
+			document.getElementById("sis_card").checked = true;
+			document.getElementById("sis_cardNumber").value = card.getCardNumber();
+			document.getElementById("sis_socialSecurityNumber").value = card.getSocialSecurityNumber();
+			document.getElementById("sis_validityBeginDate").value = dateFormatter.format(card.getValidityBeginDate());
+			document.getElementById("sis_validityEndDate").value = dateFormatter.format(card.getValidityEndDate());
+			document.getElementById("sis_surname").value = card.getSurname();
+			document.getElementById("sis_birthdate").value = dateFormatter.format(card.getBirthDate());
+			document.getElementById("sis_sex_F").checked = card.getFemale();
+			document.getElementById("sis_sex_M").checked = card.getMale();
+		}
+		document.getElementById("content").value = card.toString();
+	} else {
+		document.getElementById("content").value = "No card returned.";
+	}
+}
+
+</script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+
+//----------------
+// give the following variables:
+// subdir: the subdirectory where the applet jar file resides
+// jnlpPath: the path to the jnlp file
+// ex: subdir="appletDir";
+//     jnlpPath=subdir;
+//----------------
+var subdir="";
+var jnlpPath=subdir;
+
+//----------------
+// - get the href of this page
+// - strip off the name of this page
+//----------------
+var myloc 	 = window.location.href;
+var locarray = myloc.split("/");
+delete locarray[(locarray.length-1)];
+var url = locarray.join("/");
+
+	document.writeln('<applet code="org.jdesktop.applet.util.JNLPAppletLauncher"');
+    document.writeln('codebase = "' + url + subdir + '"');
+    document.writeln('width  ="140"');
+    document.writeln('height ="200"');
+    document.writeln('name   = "BEIDAppletLauncher"');
+	document.writeln('id   = "BEIDAppletLauncher"'); // add id attribute !!!
+    document.writeln('archive="applet-launcher.jar,beid35libJava.jar,BEID_Applet.jar">');
+
+	document.writeln('<param name="codebase_lookup" value="false">');
+	document.writeln('<param name="subapplet.classname" value="be.belgium.beid.BEID_Applet">');
+	document.writeln('<param name="progressbar" value="true">');
+	document.writeln('<param name="jnlpNumExtensions" value="1">');
+	document.writeln('<param name="jnlpExtension1" value= "' + url + jnlpPath + '/beid.jnlp">');
+
+	document.writeln('<param name="debug" value="false"/>');
+	document.writeln('<param name="Reader" value=""/>');
+	document.writeln('<param name="OCSP" value="-1"/>');
+	document.writeln('<param name="CRL" value="-1"/>');
+	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + '/beid_java_plugin.jnlp" />');
+	document.writeln('</applet>');
+
+</script>
+<br>
+<input type="button" onclick="javascript:readCard()" value="Read Card" title="Read Card"/><br>
+<br>
+A foreigner eID card and a kids eID contains the same data as an eID card for Belgian citizens.<br>
+The only difference is the card number. A foreign eID card number starts with B. And a kids eID card number starts with 610.
+<pre>
+//Code remark.
+//The classes be.belgium.eid.ForeignerEIDCard and be.belgium.eid.KidsEIDCard are subclasses of be.belgium.eid.EIDCard.
+//So instanceof be.belgium.eid.EIDCard on a object of type be.belgium.eid.ForeignerEIDCard, will return true.
+var card = new be.belgium.eid.ForeignerEIDCard();<
+if (card instanceof be.belgium.eid.EIDCard) {
+	window.alert("card is an EIDCard object.");
+}
+</pre>
+<table border=1 cellpadding=5 cellspacing=0>
+<tr>
+	<td>&nbsp;</td>
+	<td>eID card <input type=checkbox id=eid_card></td>
+	<td>kids eID card <input type=checkbox id=kids_eid_card></td>
+	<td>foreigner eID card <input type=checkbox id=foreigner_eid_card></td>
+	<td>&nbsp;</td>
+	<td>SIS card <input type=checkbox id=sis_card></td>
+</tr>
+<tr>
+	<td>Card number</td>
+	<td><input type=text id=eid_cardNumber></td>
+	<td><input type=text id=kids_eid_cardNumber></td>
+	<td><input type=text id=foreigner_eid_cardNumber></td>
+	<td>Card number</td>
+	<td><input type=text id=sis_cardNumber></td>
+</tr>
+<tr>
+	<td>NationalNumber</td>
+	<td><input type=text id=eid_nationalNumber></td>
+	<td><input type=text id=kids_eid_nationalNumber></td>
+	<td><input type=text id=foreigner_eid_nationalNumber></td>
+	<td>Social security number</td>
+	<td><input type=text id=sis_socialSecurityNumber></td>
+</tr>
+<tr>
+	<td>Chip number</td>
+	<td><input type=text id=eid_chipNumber></td>
+	<td><input type=text id=kids_eid_chipNumber></td>
+	<td><input type=text id=foreigner_eid_chipNumber></td>
+	<td>Chip number</td>
+	<td>Not available.</td>
+</tr>
+<tr>
+	<td>Validity begin date</td>
+	<td><input type=text id=eid_validityBeginDate></td>
+	<td><input type=text id=kids_eid_validityBeginDate></td>
+	<td><input type=text id=foreigner_eid_validityBeginDate></td>
+	<td>Validity begin date</td>
+	<td><input type=text id=sis_validityBeginDate></td>
+</tr>
+<tr>
+	<td>Validity end date</td>
+	<td><input type=text id=eid_validityEndDate></td>
+	<td><input type=text id=kids_eid_validityEndDate></td>
+	<td><input type=text id=foreigner_eid_validityEndDate></td>
+	<td>Validity end date</td>
+	<td><input type=text id=sis_validityEndDate></td>
+</tr>
+<tr>
+	<td>Surname</td>
+	<td><input type=text id=eid_surname></td>
+	<td><input type=text id=kids_eid_surname></td>
+	<td><input type=text id=foreigner_eid_surname></td>
+	<td>Surname</td>
+	<td><input type=text id=sis_surname></td>
+</tr>
+<tr>
+	<td>Birth date</td>
+	<td><input type=text id=eid_birthdate></td>
+	<td><input type=text id=kids_eid_birthdate></td>
+	<td><input type=text id=foreigner_eid_birthdate></td>
+	<td>Birth date</td>
+	<td><input type=text id=sis_birthdate></td>
+</tr>
+<tr>
+	<td>Sex</td>
+	<td><input type=radio name=eid_sex id=eid_sex_F value="F">F<input type=radio name=eid_sex id=eid_sex_M value="M">M</td>
+	<td><input type=radio name=kids_eid_sex id=kids_eid_sex_F value="F">F<input type=radio name=kids_eid_sex id=kids_eid_sex_M value="M">M</td>
+	<td><input type=radio name=foreigner_eid_sex id=foreigner_eid_sex_F value="F">F<input type=radio name=foreigner_eid_sex id=foreigner_eid_sex_M value="M">M</td>
+	<td>Sex</td>
+	<td><input type=radio name=sis_sex id=sis_sex_F value="F">F<input type=radio name=sis_sex id=sis_sex_M value="M">M</td>
+</tr>
+<tr>
+	<td>Special status</td>
+	<td>
+		<input type=checkbox id=eid_white_cane>White cane<br>
+		<input type=checkbox id=eid_yellow_cane>Yellow cane<br>
+		<input type=checkbox id=eid_extended_minority>Extended minority
+	</td>
+	<td>
+		<input type=checkbox id=kids_eid_white_cane>White cane<br>
+		<input type=checkbox id=kids_eid_yellow_cane>Yellow cane<br>
+		<input type=checkbox id=kids_eid_extended_minority>Extended minority
+	</td>
+	<td>
+		<input type=checkbox id=foreigner_eid_white_cane>White cane<br>
+		<input type=checkbox id=foreigner_eid_yellow_cane>Yellow cane<br>
+		<input type=checkbox id=foreigner_eid_extended_minority>Extended minority
+	</td>
+	<td>Special status</td>
+	<td>Not available.</td>
+</tr>
+</table>
+
+Card content:<br>
+<textarea id="content" cols=80 rows=20 wrap="virtual">&nbsp;</textarea>
+</body>
+</html>
