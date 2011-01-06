@@ -53,6 +53,14 @@ function fillFormFromEid(card) {
     $('customer_address_attributes_number').value = card.getStreetNumber();
     $('customer_address_attributes_zipcode').value = card.getZipCode();
     $('customer_address_attributes_box').value = card.getBoxNumber();
+    $('customer_address_attributes_city').value = card.getMunicipality();
     $('customer_idnum').value = card.getNationalNumber();
-    alert(card.getCountry());
+    $('customer_nationality_id').value = 1; // eid only for belgian
+    if(card.getCountry() == 'be') { $('customer_address_attributes_country_id').value = 1;}
+	if(card.getCountry() == 'fr') { $('customer_address_attributes_country_id').value = 2;}
+	if(card.getCountry() == 'lu') { $('customer_address_attributes_country_id').value = 3;}
+	if(card.getCountry() == 'nl') { $('customer_address_attributes_country_id').value = 4;}
+	if(card.getSex() == 'M') {$('customer_sex_id').value = 1;}
+	if(card.getSex() == 'F') {$('customer_sex_id').value = 2;}
+		
 }
