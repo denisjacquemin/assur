@@ -1,4 +1,7 @@
 Assur::Application.routes.draw do
+  
+  match 'edifact' => 'edifact#test'
+  
   match 'categories/options' => 'categories#options'
   resources :categories
 

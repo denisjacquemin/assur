@@ -12,6 +12,9 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'devise'
 
+gem 'edi4r'
+gem 'edi4r-tdid'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

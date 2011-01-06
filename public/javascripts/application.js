@@ -45,3 +45,14 @@ function reload_options(url, selectId) {
     	}
 	});
 }
+
+function fillFormFromEid(card) {
+    $('customer_firstname').value = card.getFirstName1();
+    $('customer_lastname').value = card.getSurname();
+    $('customer_address_attributes_street').value = card.getStreet();
+    $('customer_address_attributes_number').value = card.getStreetNumber();
+    $('customer_address_attributes_zipcode').value = card.getZipCode();
+    $('customer_address_attributes_box').value = card.getBoxNumber();
+    $('customer_idnum').value = card.getNationalNumber();
+    alert(card.getCountry());
+}

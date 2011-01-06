@@ -1,0 +1,2 @@
+module EdifactHelper
+end
