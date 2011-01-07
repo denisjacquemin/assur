@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Example inputfields</title>
-<script type="text/javascript" src="..\src\be_belgium_eid.js"></script>
+<script type="text/javascript" src="be_belgium_eid.js"></script>
 <script type="text/javascript" language="javascript">
 
 var cardReader = new be.belgium.eid.CardReader();
@@ -202,13 +202,13 @@ var url = locarray.join("/");
 	document.writeln('<param name="subapplet.classname" value="be.belgium.beid.BEID_Applet">');
 	document.writeln('<param name="progressbar" value="true">');
 	document.writeln('<param name="jnlpNumExtensions" value="1">');
-	document.writeln('<param name="jnlpExtension1" value= "' + url + jnlpPath + '/beid.jnlp">');
+	document.writeln('<param name="jnlpExtension1" value= "' + url + jnlpPath + 'beid.jnlp">');
 
 	document.writeln('<param name="debug" value="false"/>');
 	document.writeln('<param name="Reader" value=""/>');
 	document.writeln('<param name="OCSP" value="-1"/>');
 	document.writeln('<param name="CRL" value="-1"/>');
-	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + '/beid_java_plugin.jnlp" />');
+	document.writeln('<param name="jnlp_href" value="' + url + jnlpPath + 'beid_java_plugin.jnlp" />');
 	document.writeln('</applet>');
 
 </script>
